@@ -1,0 +1,2 @@
+POST 127.0.0.1:3000/api/v1/products HTTP/1.1
+content-type: application/json
