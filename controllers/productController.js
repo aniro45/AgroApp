@@ -24,7 +24,7 @@ exports.getAllproducts = async (Request, Response) => {
   }
 };
 
-//! Create New Productss
+//! Create New Product
 exports.createNewProduct = async (Request, Response) => {
   try {
     const newProduct = await Products.create(Request.body);
