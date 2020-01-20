@@ -4,9 +4,8 @@ const Products = require(`${__dirname}/../models/productModel.js`);
 
 //! Get All Products
 exports.getAllproducts = async (Request, Response) => {
-  const allProducts = await Products.find();
-
   try {
+    const allProducts = await Products.find();
     Response.status(200).json({
       Status: 'Successfull',
       RequestedAt: Request.requestTime,
@@ -27,8 +26,8 @@ exports.getAllproducts = async (Request, Response) => {
 
 //! Create New Product
 exports.createNewProduct = async (Request, Response) => {
-  const newProduct = await Products.create(Request.body);
   try {
+    const newProduct = await Products.create(Request.body);
     Response.status(201).json({
       Status: 'Successfull',
       RequestedAt: Request.requestTime,
@@ -48,9 +47,10 @@ exports.createNewProduct = async (Request, Response) => {
 
 //! Get Single Product By ID
 exports.getProduct = async (Request, Response) => {
-  const product = await Products.findById(Request.params.id);
-  //Product.findOne({_id:Request.parma.id})
   try {
+    const product = await Products.findById(Request.params.id);
+    //Product.findOne({_id:Request.parma.id})
+
     Response.status(404).json({
       message: 'Success',
       RequestedAt: Request.requestTime,
@@ -69,23 +69,50 @@ exports.getProduct = async (Request, Response) => {
 };
 
 //! update the Patch for the Product
-exports.patchProduct = (Request, Response) => {
-  Response.status(404).json({
-    message: 'Patched Success',
-    RequestedAt: Request.requestTime,
-    data: {
-      product: '<update patch updated>'
-    }
-  });
+exports.patchProduct = async (Request, Response) => {
+  try {
+    const patchedProduct = await Products.findByIdAndUpdate(
+      Request.params.id,
+      Request.body,
+      {
+        new: true,
+        runValidators: true
+      }
+    );
+    Response.status(200).json({
+      message: 'Patched Success',
+      RequestedAt: Request.requestTime,
+      data: {
+        patchedProduct
+      }
+    });
+  } catch (error) {
+    Response.status(404).json({
+      status: 'Failed',
+      message: {
+        Error: error
+      }
+    });
+  }
 };
 
 //! Delete Product By id
-exports.deleteProduct = (Request, Response) => {
-  Response.status(404).json({
-    message: 'Delete Success',
-    RequestedAt: Request.requestTime,
-    data: {
-      product: null
-    }
-  });
+exports.deleteProduct = async (Request, Response) => {
+  try {
+    await Products.findByIdAndDelete(Request.params.id);
+
+    Response.status(204).json({
+      message: 'Delete Success',
+      RequestedAt: Request.requestTime,
+      // messege: 'Product deleted Successfully',
+      data: null
+    });
+  } catch (error) {
+    Response.status(404).json({
+      status: 'Failed',
+      message: {
+        Error: error
+      }
+    });
+  }
 };
