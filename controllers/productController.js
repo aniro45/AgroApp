@@ -1,97 +1,75 @@
 const fs = require('fs');
 
-const readJosnFile = fs.readFileSync(
-  `${__dirname}/../devData/data/agroData.json`,
-  'utf-8'
-);
-const parsedAgroJsonData = JSON.parse(readJosnFile);
-
-exports.checkId = (Request, Response, next, val) => {
-  console.log('product id is ' + val);
-  if (Request.params.id * 1 > parsedAgroJsonData.length) {
-    return Response.status(404).json({
-      status: 'Failed',
-      data: {
-        message: 'Invalid ID'
-      }
-    });
-  }
-  next();
-};
-
-exports.checkBody = (Request, Response, next) => {
-  if (!Request.body.product || !Request.body.company) {
-    console.log('Data is Invalid');
-    return Response.status(400).json({
-      status: 'Failed',
-      data: {
-        message: 'product name or Company name is not defined!'
-      }
-    });
-  }
-  next();
-};
+const Products = require(`${__dirname}/../models/productModel.js`);
 
 //! Get All Products
-exports.getAllproducts = (Request, Response) => {
-  Response.status(200).json({
-    Status: 'Successfull',
-    RequestedAt: Request.requestTime,
-    results: parsedAgroJsonData.length,
-    data: {
-      FileData: parsedAgroJsonData
-    }
-  });
+exports.getAllproducts = async (Request, Response) => {
+  const allProducts = await Products.find();
+
+  try {
+    Response.status(200).json({
+      Status: 'Successfull',
+      RequestedAt: Request.requestTime,
+      results: allProducts.length,
+      data: {
+        allProducts
+      }
+    });
+  } catch (error) {
+    Response.status(404).json({
+      status: 'Failed',
+      message: {
+        Error: error
+      }
+    });
+  }
 };
 
 //! Create New Product
-
-exports.createNewProduct = (Request, Response) => {
-  const data = Request.body;
-
-  const newId = parsedAgroJsonData[parsedAgroJsonData.length - 1].id + 1;
-
-  const newProduct = Object.assign({ id: newId }, Request.body);
-  parsedAgroJsonData.push(newProduct);
-
-  fs.writeFile(
-    `${__dirname}/../devData/data/agroData.json`,
-    JSON.stringify(parsedAgroJsonData),
-    error => {
-      Response.status(201).json({
-        Status: 'Successfull',
-        RequestedAt: Request.requestTime,
-        results: parsedAgroJsonData.length,
-        data: {
-          FileData: newProduct
-        }
-      });
-    }
-  );
+exports.createNewProduct = async (Request, Response) => {
+  const newProduct = await Products.create(Request.body);
+  try {
+    Response.status(201).json({
+      Status: 'Successfull',
+      RequestedAt: Request.requestTime,
+      data: {
+        FileData: newProduct
+      }
+    });
+  } catch (error) {
+    Response.status(400).json({
+      status: 'Failed',
+      message: {
+        Error: error
+      }
+    });
+  }
 };
 
 //! Get Single Product By ID
-
-exports.getProduct = (Request, Response) => {
-  const id = Request.params.id * 1;
-
-  const getProduct = parsedAgroJsonData.find(el => el.id === id);
-
-  Response.status(404).json({
-    message: 'Success',
-    RequestedAt: Request.requestTime,
-    data: {
-      product: getProductcc
-    }
-  });
+exports.getProduct = async (Request, Response) => {
+  const product = await Products.findById(Request.params.id);
+  //Product.findOne({_id:Request.parma.id})
+  try {
+    Response.status(404).json({
+      message: 'Success',
+      RequestedAt: Request.requestTime,
+      data: {
+        product
+      }
+    });
+  } catch (error) {
+    Response.status(404).json({
+      stauts: 'Failed',
+      message: {
+        Error: error
+      }
+    });
+  }
 };
 
 //! update the Patch for the Product
-
 exports.patchProduct = (Request, Response) => {
-  const id = Request.params.id * 1;
-  const getProduct = parsedAgroJsonData.find(el => el.id === id);
-
   Response.status(404).json({
     message: 'Patched Success',
     RequestedAt: Request.requestTime,
@@ -102,11 +80,7 @@ exports.patchProduct = (Request, Response) => {
 };
 
 //! Delete Product By id
-
 exports.deleteProduct = (Request, Response) => {
-  const id = Request.params.id;
-  const getProduct = parsedAgroJsonData.find(el => el.id === id);
-
   Response.status(404).json({
     message: 'Delete Success',
     RequestedAt: Request.requestTime,
