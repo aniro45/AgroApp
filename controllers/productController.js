@@ -2,10 +2,69 @@ const fs = require('fs');
 
 const Products = require(`${__dirname}/../models/productModel.js`);
 
+//Alias top 5 cheap product Route Function
+exports.aliasCheapProducts = (Request, Response, next) => {
+  Request.query.limit = 5;
+  Request.query.sort = 'price,-rating';
+  Request.query.fields = 'name,price,weight,component,category,company';
+  next();
+};
+
 //! Get All Products
 exports.getAllproducts = async (Request, Response) => {
   try {
-    const allProducts = await Products.find();
+    // console.log(Request.query);
+
+    //! Build Query
+    // 1A) Filtering
+    const queryObj = { ...Request.query };
+    const excludedFields = ['page', 'sort', 'limit', 'fields'];
+    excludedFields.forEach(el => delete queryObj[el]);
+    // console.log(Request.query, queryObj);
+
+    // 2B) Advaced Filtering
+    let queryString = JSON.stringify(queryObj);
+    queryString = queryString.replace(
+      /\b(gte|gt|lte|lt)\b/g,
+      match => `$${match}`
+    );
+    // console.log(JSON.parse(queryString));
+    let query = Products.find(JSON.parse(queryString));
+
+    // 2) Sorting
+    if (Request.query.sort) {
+      const sortBy = Request.query.sort.split(',').join(' ');
+      query = query.sort(sortBy);
+    } else {
+      query = query.sort('-createdAt');
+    }
+
+    // 3) Field Limiting
+    if (Request.query.fields) {
+      const fieldsx = Request.query.fields.split(',').join(' ');
+      query = query.select(fieldsx);
+    } else {
+      query = query.select('-__v');
+    }
+
+    // 4) Paagination
+    const page = Request.query.page * 1 || 1;
+    const limit = Request.query.limit * 1 || 100;
+    const skip = (page - 1) * limit;
+    query = query.skip(skip).limit(limit);
+
+    if (Request.query.page) {
+      const numProducts = await Products.countDocuments();
+
+      if (skip >= numProducts) throw new Error('This page does not exists');
+    }
+
+    //
+
+    //! Execute Query
+    const allProducts = await query;
+
+    //! Send Respose
     Response.status(200).json({
       Status: 'Successfull',
       RequestedAt: Request.requestTime,
