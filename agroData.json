@@ -1,1 +1,64 @@
-[{"id":1,"product":"Tatamida","component":"17.8% SL of Imidachloprid","weight":"100ml","company":"TATA","type":"insectiside","description":"Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"},{"id":2,"product":"Phoskill","component":"Monocrotophos 36% SL","weight":"1 ltr","company":"UPL","type":"insectiside","description":"CONTACT AND SYSTEMIC INSECTICIDE. Effective against Caterpiller pests and sucking pests, as it has systemic and contact action."},{"id":3,"product":"Asataf","component":"75% SP formulation of Acephate","weight":"1 Kg","company":"TATA","type":"insectiside","description":"Asataf is a 75% SP formulation of Acephate, a versatile organophosphate insecticide with both contact and systemic action"},{"id":4,"product":"Saaf","component":"Carbendazim 12% + Mancozeb 63% WP","weight":"1 kg","company":"UPL","type":"insectiside","description":"Contact and Systemic action Crops: Groundnut, Fruits, Vegetables, Rice"},{"id":5,"product":"Umet","component":"Phorate 10 CG","weight":"1 Kg","company":"UPL","type":"insectiside","description":" Stem Borer, Hoppers, Shootfly, Aphid, Borers, Sucking Pest"},{"id":6,"product":"Elpida","component":"Emamectin Benzoate","weight":"500 ml","company":"GODREJ","description":"ELPIDA INSECTICIDE is effective against Lepidoptera larvae resistant to organophosphates, pyrethroids and insect growth regulators"},{"id":7,"product":"Tatamida","component":"17.8% SL of Imidachloprid","weight":"500ml","company":"TATA","type":"insectiside","description":"Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"}]
+[
+  {
+    "id": 1,
+    "product": "Tatamida",
+    "component": "17.8% SL of Imidachloprid",
+    "weight": "100ml",
+    "company": "TATA",
+    "type": "insectiside",
+    "description": "Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"
+  },
+  {
+    "id": 2,
+    "product": "Phoskill",
+    "component": "Monocrotophos 36% SL",
+    "weight": "1 ltr",
+    "company": "UPL",
+    "type": "insectiside",
+    "description": "CONTACT AND SYSTEMIC INSECTICIDE. Effective against Caterpiller pests and sucking pests, as it has systemic and contact action."
+  },
+  {
+    "id": 3,
+    "product": "Asataf",
+    "component": "75% SP formulation of Acephate",
+    "weight": "1 Kg",
+    "company": "TATA",
+    "type": "insectiside",
+    "description": "Asataf is a 75% SP formulation of Acephate, a versatile organophosphate insecticide with both contact and systemic action"
+  },
+  {
+    "id": 4,
+    "product": "Saaf",
+    "component": "Carbendazim 12% + Mancozeb 63% WP",
+    "weight": "1 kg",
+    "company": "UPL",
+    "type": "insectiside",
+    "description": "Contact and Systemic action Crops: Groundnut, Fruits, Vegetables, Rice"
+  },
+  {
+    "id": 5,
+    "product": "Umet",
+    "component": "Phorate 10 CG",
+    "weight": "1 Kg",
+    "company": "UPL",
+    "type": "insectiside",
+    "description": " Stem Borer, Hoppers, Shootfly, Aphid, Borers, Sucking Pest"
+  },
+  {
+    "id": 6,
+    "product": "Elpida",
+    "component": "Emamectin Benzoate",
+    "weight": "500 ml",
+    "company": "GODREJ",
+    "description": "ELPIDA INSECTICIDE is effective against Lepidoptera larvae resistant to organophosphates, pyrethroids and insect growth regulators"
+  },
+  {
+    "id": 7,
+    "product": "Tatamida",
+    "component": "17.8% SL of Imidachloprid",
+    "weight": "500 ml",
+    "company": "TATA",
+    "type": "insectiside",
+    "description": "Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"
+  }
+]
