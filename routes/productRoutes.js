@@ -5,6 +5,12 @@ const router = express.Router();
 
 // router.param('id', productController.checkId);
 
+//Special Route for top 5 cheap Products
+router
+  .route('/top-5-cheap')
+  .get(productController.aliasCheapProducts, productController.getAllproducts);
+
+//Regular Routes
 router
   .route('/')
   .get(productController.getAllproducts)
