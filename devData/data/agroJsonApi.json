@@ -1,0 +1,494 @@
+[
+  {
+    "name": "TataMida",
+    "component": "imidachloprid 17.7% SL",
+    "weight": 1,
+    "company": "TATA",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "liquid",
+    "price": 1030,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "tatamida.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.7,
+    "description": "Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"
+  },
+
+  {
+    "name": "TataMida",
+    "component": "imidachloprid 17.7% SL",
+    "weight": 0.5,
+    "company": "TATA",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "liquid",
+    "price": 540,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "tatamida.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.7,
+    "description": "Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"
+  },
+  {
+    "name": "TataMida",
+    "component": "imidachloprid 17.7% SL",
+    "weight": 0.25,
+    "company": "TATA",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "liquid",
+    "price": 250,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "tatamida.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.7,
+    "description": "Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"
+  },
+  {
+    "name": "TataMida",
+    "component": "imidachloprid 17.7% SL",
+    "weight": 0.1,
+    "company": "TATA",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "liquid",
+    "price": 150,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "tatamida.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.7,
+    "description": "Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"
+  },
+
+  {
+    "name": "Phoskill",
+    "component": "Monocrotophos 36% SL",
+    "weight": 1,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "liquid",
+    "price": 890,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "phoskill.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.3,
+    "description": "CONTACT AND SYSTEMIC INSECTICIDE. Effective against Caterpiller pests and sucking pests, as it has systemic and contact action."
+  },
+  {
+    "name": "Phoskill",
+    "component": "Monocrotophos 36% SL",
+    "weight": 0.5,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "liquid",
+    "price": 490,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "phoskill.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.3,
+    "description": "CONTACT AND SYSTEMIC INSECTICIDE. Effective against Caterpiller pests and sucking pests, as it has systemic and contact action."
+  },
+
+  {
+    "name": "Phoskill",
+    "component": "Monocrotophos 36% SL",
+    "weight": 0.25,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "liquid",
+    "price": 300,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "phoskill.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.3,
+    "description": "CONTACT AND SYSTEMIC INSECTICIDE. Effective against Caterpiller pests and sucking pests, as it has systemic and contact action."
+  },
+
+  {
+    "name": "Phoskill",
+    "component": "Monocrotophos 36% SL",
+    "weight": 0.1,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "liquid",
+    "price": 150,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "phoskill.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.3,
+    "description": "CONTACT AND SYSTEMIC INSECTICIDE. Effective against Caterpiller pests and sucking pests, as it has systemic and contact action."
+  },
+
+  {
+    "name": "Asataf",
+    "component": "75% SP formulation of Acephate",
+    "weight": 1,
+    "company": "TATA",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 860,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "Asataf is a 75% SP formulation of Acephate, a versatile organophosphate insecticide with both contact and systemic action"
+  },
+
+  {
+    "name": "Asataf",
+    "component": "75% SP formulation of Acephate",
+    "weight": 500,
+    "company": "TATA",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 520,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "Asataf is a 75% SP formulation of Acephate, a versatile organophosphate insecticide with both contact and systemic action"
+  },
+
+  {
+    "name": "Asataf",
+    "component": "75% SP formulation of Acephate",
+    "weight": 0.25,
+    "company": "TATA",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 320,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "Asataf is a 75% SP formulation of Acephate, a versatile organophosphate insecticide with both contact and systemic action"
+  },
+
+  {
+    "name": "Asataf",
+    "component": "75% SP formulation of Acephate",
+    "weight": 0.1,
+    "company": "TATA",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 200,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "Asataf is a 75% SP formulation of Acephate, a versatile organophosphate insecticide with both contact and systemic action"
+  },
+
+  {
+    "name": "Saaf",
+    "component": "Carbendazim 12% + Mancozeb 63% WP",
+    "weight": 1,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 720,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "Contact and Systemic action Crops: Groundnut, Fruits, Vegetables, Rice"
+  },
+
+  {
+    "name": "Saaf",
+    "component": "Carbendazim 12% + Mancozeb 63% WP",
+    "weight": 0.5,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 410,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "Contact and Systemic action Crops: Groundnut, Fruits, Vegetables, Rice"
+  },
+
+  {
+    "name": "Saaf",
+    "component": "Carbendazim 12% + Mancozeb 63% WP",
+    "weight": 0.25,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 250,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "Contact and Systemic action Crops: Groundnut, Fruits, Vegetables, Rice"
+  },
+
+  {
+    "name": "Saaf",
+    "component": "Carbendazim 12% + Mancozeb 63% WP",
+    "weight": 0.1,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 130,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "Contact and Systemic action Crops: Groundnut, Fruits, Vegetables, Rice"
+  },
+  {
+    "name": "Umet",
+    "component": "Phorate 10 CG",
+    "weight": 1,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 630,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": " Stem Borer, Hoppers, Shootfly, Aphid, Borers, Sucking Pest"
+  },
+  {
+    "name": "Umet",
+    "component": "Phorate 10 CG",
+    "weight": 0.5,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 350,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": " Stem Borer, Hoppers, Shootfly, Aphid, Borers, Sucking Pest"
+  },
+  {
+    "name": "Umet",
+    "component": "Phorate 10 CG",
+    "weight": 0.25,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 200,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": " Stem Borer, Hoppers, Shootfly, Aphid, Borers, Sucking Pest"
+  },
+  {
+    "name": "Umet",
+    "component": "Phorate 10 CG",
+    "weight": 0.1,
+    "company": "UPL",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 100,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": " Stem Borer, Hoppers, Shootfly, Aphid, Borers, Sucking Pest"
+  },
+  {
+    "name": "Elpida",
+    "component": "Emamectin Benzoate",
+    "weight": 1,
+    "company": "GODREJ",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 1050,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "ELPIDA INSECTICIDE is effective against Lepidoptera larvae resistant to organophosphates, pyrethroids and insect growth regulators"
+  },
+  {
+    "name": "Elpida",
+    "component": "Emamectin Benzoate",
+    "weight": 0.5,
+    "company": "GODREJ",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 630,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "ELPIDA INSECTICIDE is effective against Lepidoptera larvae resistant to organophosphates, pyrethroids and insect growth regulators"
+  },
+  {
+    "name": "Elpida",
+    "component": "Emamectin Benzoate",
+    "weight": 0.25,
+    "company": "GODREJ",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 350,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "ELPIDA INSECTICIDE is effective against Lepidoptera larvae resistant to organophosphates, pyrethroids and insect growth regulators"
+  },
+  {
+    "name": "Elpida",
+    "component": "Emamectin Benzoate",
+    "weight": 0.1,
+    "company": "GODREJ",
+    "totalQuantity": 100,
+    "type": "Pesticide",
+    "category": "insecticide",
+    "form": "solid",
+    "price": 200,
+    "onDate": {
+      "date": "1579808959014",
+      "quantiyArrived": 40
+    },
+    "imageCover": "asataf.jpg",
+    "images": ["image1,", "image2", "image3", "imagex"],
+    "createdAt": "1579808959014",
+    "rating": 4.5,
+    "description": "ELPIDA INSECTICIDE is effective against Lepidoptera larvae resistant to organophosphates, pyrethroids and insect growth regulators"
+  }
+]
