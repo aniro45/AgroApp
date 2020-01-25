@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const sligify = require('slugify');
 
 const Xenum = [];
 
@@ -13,75 +14,129 @@ const onDateSchema = new mongoose.Schema({
   }
 });
 
-const ProductSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'A product must have name'],
-    trim: true
-  },
-  component: {
-    type: String,
-    required: [true, 'A tour must have product component']
-  },
-  weight: {
-    type: Number,
-    required: [true, 'A product must have weight']
-  },
-  company: {
-    type: String,
-    required: [true, 'A product must have company'],
-    trim: true
-  },
-  totalQuantity: {
-    type: Number,
-    required: [true, 'A product must have total quantity']
-  },
-  type: {
-    type: String,
-    default: 'Pesticide',
-    trim: true
-  },
-  category: {
-    type: String,
-    required: [true, 'A tour must have a category'],
-    trim: true
-  },
-  form: {
-    type: String,
-    enum: ['solid', 'liquid'],
-    required: [true, 'A product must have form']
-  },
-  price: {
-    type: Number,
-    required: [true, 'A product must have price']
-  },
-  onDate: {
-    type: onDateSchema
-  },
-  imageCover: {
-    type: String,
-    required: [true, 'A product must have cover Image']
-  },
-  images: [String],
+const ProductSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, 'A product must have name'],
+      trim: true
+    },
+    component: {
+      type: String,
+      required: [true, 'A tour must have product component']
+    },
+    weight: {
+      type: Number,
+      required: [true, 'A product must have weight']
+    },
+    company: {
+      type: String,
+      required: [true, 'A product must have company'],
+      trim: true
+    },
+    totalQuantity: {
+      type: Number,
+      required: [true, 'A product must have total quantity']
+    },
+    type: {
+      type: String,
+      default: 'Pesticide',
+      trim: true
+    },
+    category: {
+      type: String,
+      required: [true, 'A tour must have a category'],
+      trim: true
+    },
+    form: {
+      type: String,
+      enum: ['solid', 'liquid'],
+      required: [true, 'A product must have form']
+    },
+    price: {
+      type: Number,
+      required: [true, 'A product must have price']
+    },
+    onDate: {
+      type: onDateSchema
+    },
+    imageCover: {
+      type: String,
+      required: [true, 'A product must have cover Image']
+    },
+    images: [String],
 
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-    select: false
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+      select: false
+    },
+    rating: {
+      type: Number,
+      required: false
+    },
+    description: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    slug: String,
+    privateProduct: {
+      type: Boolean,
+      dafault: false
+    }
   },
-  rating: {
-    type: Number,
-    required: false
-  },
-  description: {
-    type: String,
-    required: false,
-    trim: true
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
   }
+);
+
+//Indexing and complext schema Apply
+ProductSchema.index({ name: 1, weight: 1 }, { unique: true });
+
+//Virtual Properties
+ProductSchema.virtual('unit').get(function() {
+  return this.weight * 1000;
 });
 
-// ProductSchema.index({ name: 1, weight: 1, description: 1 }, { unique: true });
+//Document Middleware
+ProductSchema.pre('save', function(next) {
+  this.slug = sligify(this.name, { lower: true });
+  next();
+});
 
-ProductSchema.index({ name: 1, weight: 1 }, { unique: true });
+// ProductSchema.pre('save', function(next) {
+//   console.log('will save the document....');
+//   next();
+// });
+
+// ProductSchema.post('save', function(doc, next) {
+//   console.log(doc);
+//   next();
+// });
+
+//Query Middleware
+// ProductSchema.pre('find', function(next) {
+ProductSchema.pre(/^find/, function(next) {
+  //reguler expression for "find" to cover "findOne"
+  this.find({ privateProduct: { $ne: true } });
+  this.start = Date.now();
+  next();
+});
+
+ProductSchema.post(/^find/, function(docs, next) {
+  console.log(`query took ${Date.now() - this.start} millisecond`);
+  next();
+});
+
+//Aggrgation Middleware
+ProductSchema.pre('aggregate', function(next) {
+  this.pipeline().unshift({ $match: { privateProduct: { $ne: true } } });
+  console.log(this.pipeline);
+  next();
+});
+
+//Creating Model for ProductSchema
 const Products = mongoose.model('produxes', ProductSchema);
 module.exports = Products;
