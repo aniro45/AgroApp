@@ -10,6 +10,9 @@ router
   .route('/top-5-cheap')
   .get(productController.aliasCheapProducts, productController.getAllproducts);
 
+//Aggregation Pipeling stats
+router.route('/product-stats').get(productController.productStats);
+
 //Regular Routes
 router
   .route('/')
