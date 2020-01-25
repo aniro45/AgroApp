@@ -132,3 +132,46 @@ exports.deleteProduct = async (Request, Response) => {
     });
   }
 };
+
+//! Aggregation Pipeline
+
+exports.productStats = async (Request, Response) => {
+  try {
+    const stats = await Products.aggregate([
+      {
+        $match: { rating: { $gte: 4 } }
+      },
+      {
+        $group: {
+          _id: { $toUpper: '$form' },
+          numProducts: { $sum: 1 },
+          totalRatings: { $sum: '$rating' },
+          avgRating: { $avg: '$rating' },
+          avgPrice: { $avg: '$price' },
+          minPrice: { $min: '$price' },
+          maxPrice: { $max: '$price' }
+        }
+      },
+      {
+        $sort: { avgPrice: 1 }
+      }
+      // ,{
+      //   $match: { _id: { $ne: 'SOLID' } }
+      // }
+    ]);
+    Response.status(200).json({
+      message: 'Success',
+      RequestedAt: Request.requestTime,
+      data: {
+        stats
+      }
+    });
+  } catch (error) {
+    Response.status(404).json({
+      status: 'Failed',
+      message: {
+        Error: error
+      }
+    });
+  }
+};
