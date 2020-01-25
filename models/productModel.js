@@ -19,7 +19,9 @@ const ProductSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, 'A product must have name'],
-      trim: true
+      trim: true,
+      minlength: [3, 'A product name must have atleast 3 charachters'],
+      maxlength: [30, 'A product name must have atmost 30 charachters']
     },
     component: {
       type: String,
@@ -50,8 +52,11 @@ const ProductSchema = new mongoose.Schema(
     },
     form: {
       type: String,
-      enum: ['solid', 'liquid'],
-      required: [true, 'A product must have form']
+      required: [true, 'A product must have form'],
+      enum: {
+        values: ['solid', 'liquid'],
+        message: 'form should be either solid or liquid'
+      }
     },
     price: {
       type: Number,
@@ -73,7 +78,9 @@ const ProductSchema = new mongoose.Schema(
     },
     rating: {
       type: Number,
-      required: false
+      required: false,
+      min: [1, 'rating must be Atleat 1.0'],
+      max: [5, 'rating must be Atmost 5.0']
     },
     description: {
       type: String,
