@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const sligify = require('slugify');
+const validator = require('validator');
 
 const Xenum = [];
 
@@ -21,7 +22,11 @@ const ProductSchema = new mongoose.Schema(
       required: [true, 'A product must have name'],
       trim: true,
       minlength: [3, 'A product name must have atleast 3 charachters'],
-      maxlength: [30, 'A product name must have atmost 30 charachters']
+      maxlength: [30, 'A product name must have atmost 30 charachters'],
+      validate: [
+        validator.isAlpha,
+        'A product name should only containt charachter'
+      ]
     },
     component: {
       type: String,
@@ -61,6 +66,16 @@ const ProductSchema = new mongoose.Schema(
     price: {
       type: Number,
       required: [true, 'A product must have price']
+    },
+    priceDiscount: {
+      type: Number,
+      validate: {
+        validator: function(val) {
+          //this only points to current doc on NEW document creation.
+          return val < this.price;
+        },
+        message: 'price discount must be less than price'
+      }
     },
     onDate: {
       type: onDateSchema
