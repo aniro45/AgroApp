@@ -3,6 +3,8 @@ const fs = require('fs');
 //Testing Purpose
 const Products = require(`${__dirname}/../models/productModel.js`);
 const APIFeatures = require(`${__dirname}/../utils/apiFeatures.js`);
+const catchAsyncError = require(`${__dirname}/../utils/catchAsync.js`);
+const AppError = require(`${__dirname}/../utils/appError.js`);
 
 //! Alias top 5 cheap product Route Function
 exports.aliasCheapProducts = (Request, Response, next) => {
@@ -13,166 +15,121 @@ exports.aliasCheapProducts = (Request, Response, next) => {
 };
 
 //! Get All Products
-exports.getAllproducts = async (Request, Response) => {
-  try {
-    const features = new APIFeatures(Products.find(), Request.query)
-      .filter()
-      .sort()
-      .limitFields()
-      .paginate();
-    const allProducts = await features.query;
+exports.getAllproducts = catchAsyncError(async (Request, Response, next) => {
+  console.log(process.env.NODE_ENV);
 
-    //! Send Respose
-    Response.status(200).json({
-      Status: 'Successfull',
-      RequestedAt: Request.requestTime,
-      results: allProducts.length,
-      data: {
-        allProducts
-      }
-    });
-  } catch (error) {
-    Response.status(404).json({
-      status: 'Failed',
-      message: {
-        Error: error
-      }
-    });
-  }
-};
+  const features = new APIFeatures(Products.find(), Request.query)
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();
+  const allProducts = await features.query;
+
+  //! Send Respose
+  Response.status(200).json({
+    Status: 'Successfull',
+    RequestedAt: Request.requestTime,
+    results: allProducts.length,
+    data: {
+      allProducts
+    }
+  });
+});
 
 //! Create New Product
-exports.createNewProduct = async (Request, Response) => {
-  try {
-    const newProduct = await Products.create(Request.body);
-    Response.status(201).json({
-      Status: 'Successfull',
-      RequestedAt: Request.requestTime,
-      data: {
-        FileData: newProduct
-      }
-    });
-  } catch (error) {
-    Response.status(400).json({
-      status: 'Failed',
-      message: {
-        Error: error
-      }
-    });
-  }
-};
+exports.createNewProduct = catchAsyncError(async (Request, Response, next) => {
+  const newProduct = await Products.create(Request.body);
+  Response.status(201).json({
+    Status: 'Successfull',
+    RequestedAt: Request.requestTime,
+    data: {
+      FileData: newProduct
+    }
+  });
+});
 
 //! Get Single Product By ID
-exports.getProduct = async (Request, Response) => {
-  try {
-    const product = await Products.findById(Request.params.id);
-    //Product.findOne({_id:Request.parma.id})
+exports.getProduct = catchAsyncError(async (Request, Response, next) => {
+  const product = await Products.findById(Request.params.id);
+  //Product.findOne({_id:Request.parma.id})
 
-    Response.status(404).json({
-      message: 'Success',
-      RequestedAt: Request.requestTime,
-      data: {
-        product
-      }
-    });
-  } catch (error) {
-    Response.status(404).json({
-      stauts: 'Failed',
-      message: {
-        Error: error
-      }
-    });
+  if (!product) {
+    return next(new AppError('No Product found with this ID!', 404));
   }
-};
+  Response.status(404).json({
+    message: 'Success',
+    RequestedAt: Request.requestTime,
+    data: {
+      product
+    }
+  });
+});
 
 //! update the Patch for the Product
-exports.patchProduct = async (Request, Response) => {
-  try {
-    const patchedProduct = await Products.findByIdAndUpdate(
-      Request.params.id,
-      Request.body,
-      {
-        new: true,
-        runValidators: true
-      }
-    );
-    Response.status(200).json({
-      message: 'Patched Success',
-      RequestedAt: Request.requestTime,
-      data: {
-        patchedProduct
-      }
-    });
-  } catch (error) {
-    Response.status(404).json({
-      status: 'Failed',
-      message: {
-        Error: error
-      }
-    });
+exports.patchProduct = catchAsyncError(async (Request, Response, next) => {
+  const patchedProduct = await Products.findByIdAndUpdate(
+    Request.params.id,
+    Request.body,
+    {
+      new: true,
+      runValidators: true
+    }
+  );
+  if (!patchedProduct) {
+    return next(new AppError('No Product found with this ID!', 404));
   }
-};
+  Response.status(200).json({
+    message: 'Patched Success',
+    RequestedAt: Request.requestTime,
+    data: {
+      patchedProduct
+    }
+  });
+});
 
 //! Delete Product By id
-exports.deleteProduct = async (Request, Response) => {
-  try {
-    await Products.findByIdAndDelete(Request.params.id);
-
-    Response.status(204).json({
-      message: 'Delete Success',
-      RequestedAt: Request.requestTime,
-      // messege: 'Product deleted Successfully',
-      data: null
-    });
-  } catch (error) {
-    Response.status(404).json({
-      status: 'Failed',
-      message: {
-        Error: error
-      }
-    });
+exports.deleteProduct = catchAsyncError(async (Request, Response, next) => {
+  const product = await Products.findByIdAndDelete(Request.params.id);
+  if (!product) {
+    return next(new AppError('No Product found with this ID!', 404));
   }
-};
+  Response.status(204).json({
+    message: 'Delete Success',
+    RequestedAt: Request.requestTime,
+    data: null
+  });
+});
 
 //! Aggregation Pipeline
 
-exports.productStats = async (Request, Response) => {
-  try {
-    const stats = await Products.aggregate([
-      {
-        $match: { rating: { $gte: 4 } }
-      },
-      {
-        $group: {
-          _id: { $toUpper: '$form' },
-          numProducts: { $sum: 1 },
-          totalRatings: { $sum: '$rating' },
-          avgRating: { $avg: '$rating' },
-          avgPrice: { $avg: '$price' },
-          minPrice: { $min: '$price' },
-          maxPrice: { $max: '$price' }
-        }
-      },
-      {
-        $sort: { avgPrice: 1 }
+exports.productStats = catchAsyncError(async (Request, Response, next) => {
+  const stats = await Products.aggregate([
+    {
+      $match: { rating: { $gte: 4 } }
+    },
+    {
+      $group: {
+        _id: { $toUpper: '$form' },
+        numProducts: { $sum: 1 },
+        totalRatings: { $sum: '$rating' },
+        avgRating: { $avg: '$rating' },
+        avgPrice: { $avg: '$price' },
+        minPrice: { $min: '$price' },
+        maxPrice: { $max: '$price' }
       }
-      // ,{
-      //   $match: { _id: { $ne: 'SOLID' } }
-      // }
-    ]);
-    Response.status(200).json({
-      message: 'Success',
-      RequestedAt: Request.requestTime,
-      data: {
-        stats
-      }
-    });
-  } catch (error) {
-    Response.status(404).json({
-      status: 'Failed',
-      message: {
-        Error: error
-      }
-    });
-  }
-};
+    },
+    {
+      $sort: { avgPrice: 1 }
+    }
+    // ,{
+    //   $match: { _id: { $ne: 'SOLID' } }
+    // }
+  ]);
+  Response.status(200).json({
+    message: 'Success',
+    RequestedAt: Request.requestTime,
+    data: {
+      stats
+    }
+  });
+});
