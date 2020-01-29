@@ -22,11 +22,15 @@ const ProductSchema = new mongoose.Schema(
       required: [true, 'A product must have name'],
       trim: true,
       minlength: [3, 'A product name must have atleast 3 charachters'],
-      maxlength: [30, 'A product name must have atmost 30 charachters'],
-      validate: [
-        validator.isAlpha,
-        'A product name should only containt charachter'
-      ]
+      maxlength: [30, 'A product name must have atmost 30 charachters']
+      // validate: [
+      //   validator.isAlpha,
+      //   // validator.matches(/^[a-zA-Z]+$/i),
+      //   // input.split(' ').every(function(word) {
+      //   //   return isAlpha(word);
+      //   // }),
+      //   'A product name should only containt charachter'
+      // ]
     },
     component: {
       type: String,
