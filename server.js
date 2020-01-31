@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-process.on('uncaughtException', error => {
-  console.log('Uncaught Exception! Shutting Down...');
-  console.log(error.name, error.message);
-  process.exit(1);
-});
+if (process.env.NODE_ENV === 'production') {
+  process.on('uncaughtException', error => {
+    console.log('Uncaught Exception! Shutting Down...');
+    console.log(error.name, error.message);
+    process.exit(1);
+  });
+}
 
 dotenv.config({ path: './config.env' });
 const app = require(`${__dirname}/app.js`);
@@ -45,16 +47,17 @@ mongoose
 //! SERVER CODE
 const port = process.env.PORT;
 const server = app.listen(port, () => {
-  console.log(`Server is Running on port ${port}...`);
-  console.log(process.env.NODE_ENV);
+  console.log(
+    `Server is Running in ${process.env.NODE_ENV.toUpperCase()} mode on port ${port}...`
+  );
 });
 
-process.on('unhandledRejection', error => {
-  console.log(error.name, error.message);
-  console.log('UNdandler Rejection! Shutting Down...');
-  server.close(() => {
-    process.exit(1);
+if (process.env.NODE_ENV === 'production') {
+  process.on('unhandledRejection', error => {
+    console.log(error.name, error.message);
+    console.log('UNdandler Rejection! Shutting Down...');
+    server.close(() => {
+      process.exit(1);
+    });
   });
-});
-
-
+}
