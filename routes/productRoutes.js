@@ -1,6 +1,6 @@
 const express = require('express');
 const productController = require(`${__dirname}/../controllers/productController.js`);
-
+const authController = require(`${__dirname}/../controllers/authController`);
 const router = express.Router();
 
 // router.param('id', productController.checkId);
@@ -19,7 +19,7 @@ router.route('/product-stats').get(productController.productStats);
 //Regular Routes
 router
   .route('/')
-  .get(productController.getAllproducts)
+  .get(authController.protect, productController.getAllproducts)
   .post(productController.createNewProduct);
 
 router
