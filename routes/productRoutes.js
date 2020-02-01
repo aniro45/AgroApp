@@ -5,18 +5,18 @@ const router = express.Router();
 
 // router.param('id', productController.checkId);
 
-//Special Route for top 5 cheap Products
+//! Special Route for top 5 cheap Products
 router
   .route('/top-5-cheap')
   .get(productController.aliasCheapProducts, productController.getAllproducts);
 
-//Testing Route
+//! Testing Route
 router.route('/test-route').get();
 
-//Aggregation Pipeling stats
+//! Aggregation Pipeling stats
 router.route('/product-stats').get(productController.productStats);
 
-//Regular Routes
+//! Regular Routes
 router
   .route('/')
   .get(authController.protect, productController.getAllproducts)
@@ -26,5 +26,9 @@ router
   .route('/:id')
   .get(productController.getProduct)
   .patch(productController.patchProduct)
-  .delete(productController.deleteProduct);
+  .delete(
+    authController.protect,
+    authController.restrictTo('admin', 'dev'),
+    productController.deleteProduct
+  );
 module.exports = router;
