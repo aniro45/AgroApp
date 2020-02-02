@@ -28,7 +28,7 @@ router
   .patch(productController.patchProduct)
   .delete(
     authController.protect,
-    authController.restrictTo('admin', 'dev'),
+    authController.restrictTo('admin', 'seller'),
     productController.deleteProduct
   );
 module.exports = router;
