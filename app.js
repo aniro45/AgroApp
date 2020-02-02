@@ -1,7 +1,12 @@
-// const fs = require('fs');
+// const fs = require('fs'  );
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
 
 const productRouter = require(`${__dirname}/routes/productRoutes.js`);
 const userRouter = require(`${__dirname}/routes/userRoutes.js`);
@@ -11,11 +16,49 @@ const GlobalErrorHandler = require(`${__dirname}/controllers/errorController.js`
 
 // console.log(app.get('env')); //! to get Environment if it is dev or production
 
+//! Set security HTTP headers
+app.use(helmet());
+
+//! Development Logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-app.use(express.json());
-app.use(express.static(`${__dirname}/public`)); //!Serving static file in route
+
+//! Limiter to get secure from DOS attack(limit Req from same IP)
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'To many Request from this IP, PLease Try again later!'
+});
+app.use('/api', limiter);
+
+//! Body parser, REasing data from body into request.body
+app.use(express.json({ limit: '10kb' }));
+
+//! Data Sanitization Against NoSQL query Injection
+app.use(mongoSanitize());
+
+//! Data sanitization Against XSS(Cross site Scripting) attack
+app.use(xss());
+
+//! Prevent HTTP parameter pollution(pp)
+app.use(
+  hpp({
+    whitelist: [
+      'name',
+      'price',
+      'rating',
+      'weight',
+      'company',
+      'totalQuantity',
+      'form',
+      'unit'
+    ]
+  })
+);
+
+//!Serving static file in route
+app.use(express.static(`${__dirname}/public`));
 
 //! Sample to check request
 app.use((Request, Response, next) => {
