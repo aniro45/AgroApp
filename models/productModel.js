@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const sligify = require('slugify');
 const validator = require('validator');
-
-const Xenum = [];
+const User = require(`${__dirname}/userModel`);
 
 const onDateSchema = new mongoose.Schema({
   date: {
@@ -110,7 +109,23 @@ const ProductSchema = new mongoose.Schema(
     privateProduct: {
       type: Boolean,
       dafault: false
-    }
+    },
+    sllerLocation: {
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point']
+      },
+      coordinates: [Number],
+      address: String
+    },
+    // sellers: Array //Embedding
+    sellers: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'usex'
+      }
+    ]
   },
   {
     toJSON: { virtuals: true },
@@ -126,11 +141,25 @@ ProductSchema.virtual('unit').get(function() {
   return this.weight * 1000;
 });
 
+//virtual Populate
+ProductSchema.virtual('reviews', {
+  ref: 'review',
+  foreignField: 'product',
+  localField: '_id'
+});
+
 //Document Middleware
 ProductSchema.pre('save', function(next) {
   this.slug = sligify(this.name, { lower: true });
   next();
 });
+
+//Embedding
+// ProductSchema.pre('save', async function(next) {
+//   const sellersPromises = this.sellers.map(async id => await User.findById(id));
+//   this.sellers = await Promise.all(sellersPromises);
+//   next();
+// });
 
 // ProductSchema.pre('save', function(next) {
 //   console.log('will save the document....');
@@ -148,6 +177,15 @@ ProductSchema.pre(/^find/, function(next) {
   //reguler expression for "find" to cover "findOne"
   this.find({ privateProduct: { $ne: true } });
   this.start = Date.now();
+  next();
+});
+
+//populate or child normilization
+ProductSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'sellers',
+    select: '-__v -passwordChangedAt'
+  });
   next();
 });
 
