@@ -1,6 +1,7 @@
 const express = require('express');
 const userController = require(`${__dirname}/../controllers/userController.js`);
 const authController = require(`${__dirname}/../controllers/authController.js`);
+const reviewController = require(`${__dirname}/../controllers/reviewController`);
 
 const router = express.Router();
 
@@ -32,5 +33,6 @@ router
   .get(userController.getSingleUser)
   .patch(userController.patchUser)
   .delete(userController.deleteUser);
+
 
 module.exports = router;
