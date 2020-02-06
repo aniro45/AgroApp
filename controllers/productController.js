@@ -5,6 +5,7 @@ const Products = require(`${__dirname}/../models/productModel.js`);
 const APIFeatures = require(`${__dirname}/../utils/apiFeatures.js`);
 const catchAsyncError = require(`${__dirname}/../utils/catchAsync.js`);
 const AppError = require(`${__dirname}/../utils/appError.js`);
+const factory = require(`${__dirname}/handlerFactory`);
 
 //! Alias top 5 cheap product Route Function
 exports.aliasCheapProducts = (Request, Response, next) => {
@@ -50,7 +51,9 @@ exports.createNewProduct = catchAsyncError(async (Request, Response, next) => {
 
 //! Get Single Product By ID
 exports.getProduct = catchAsyncError(async (Request, Response, next) => {
-  const product = await Products.findById(Request.params.id);
+  const product = await Products.findById(Request.params.id).populate(
+    'reviews'
+  );
   //Product.findOne({_id:Request.parma.id})
 
   if (!product) {
@@ -88,17 +91,19 @@ exports.patchProduct = catchAsyncError(async (Request, Response, next) => {
 });
 
 //! Delete Product By id
-exports.deleteProduct = catchAsyncError(async (Request, Response, next) => {
-  const product = await Products.findByIdAndDelete(Request.params.id);
-  if (!product) {
-    return next(new AppError('No Product found with this ID!', 404));
-  }
-  Response.status(204).json({
-    message: 'Delete Success',
-    RequestedAt: Request.requestTime,
-    data: null
-  });
-});
+exports.deleteProduct = factory.deleteOne(product);
+
+// exports.deleteProduct = catchAsyncError(async (Request, Response, next) => {
+//   const product = await Products.findByIdAndDelete(Request.params.id);
+//   if (!product) {
+//     return next(new AppError('No Product found with this ID!', 404));
+//   }
+//   Response.status(204).json({
+//     message: 'Delete Success',
+//     RequestedAt: Request.requestTime,
+//     data: null
+//   });
+// });
 
 //! Aggregation Pipeline
 
