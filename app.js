@@ -10,6 +10,7 @@ const hpp = require('hpp');
 
 const productRouter = require(`${__dirname}/routes/productRoutes.js`);
 const userRouter = require(`${__dirname}/routes/userRoutes.js`);
+const reviewRouter = require(`${__dirname}/routes/reviewRoutes`);
 
 const AppError = require(`${__dirname}/utils/appError.js`);
 const GlobalErrorHandler = require(`${__dirname}/controllers/errorController.js`);
@@ -80,6 +81,7 @@ const blankRoute = (Request, Response) => {
 //! Routes Middleware
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reviews', reviewRouter);
 app.route('/').get(blankRoute);
 
 //! Error handling for wrong URL
