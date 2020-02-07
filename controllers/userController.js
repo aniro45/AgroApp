@@ -3,6 +3,7 @@ const APIFeatures = require(`${__dirname}/../utils/apiFeatures.js`);
 const catchAsync = require(`${__dirname}/../utils/catchAsync.js`);
 const User = require(`${__dirname}/../models/userModel`);
 const AppError = require(`${__dirname}/../utils/appError`);
+const factory = require(`${__dirname}/handlerFactory`);
 
 //! This filters data and select only required data
 const filterObj = (obj, ...allowedFields) => {
@@ -13,19 +14,11 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
-//! This Gives all Users from database
-exports.getAllUsers = catchAsync(async (Request, Response) => {
-  const allUsers = await User.find();
-
-  Response.status(200).json({
-    Status: 'Successfull',
-    RequestedAt: Request.requestTime,
-    results: allUsers.length,
-    data: {
-      allUsers
-    }
-  });
-});
+//! Get Self Data While Logged in
+exports.getMe = (Request, Response, next) => {
+  Request.params.id = Request.user.id;
+  next();
+};
 
 //! Update user details while logged in
 exports.updateMe = catchAsync(async (Request, Response, next) => {
@@ -68,34 +61,22 @@ exports.deleteMe = catchAsync(async (Request, Response, next) => {
   });
 });
 
-//! create new User By admin
-exports.createNewUser = (Request, Response) => {
-  Response.status(500).json({
-    status: 'error',
-    message: 'This User route is not yet defined!'
+//! create User As Admin
+exports.createNewUser = catchAsync(async (Request, Response, next) => {
+  Response.status(204).json({
+    status: 'This Route is not yet Defined! please use /signUp instead!',
+    data: null
   });
-};
+});
+
+//! This Gives all Users from database
+exports.getAllUsers = factory.getAll(User);
 
 //! Get single user by Id
-exports.getSingleUser = (Request, Response) => {
-  Response.status(500).json({
-    status: 'error',
-    message: 'This User route is not yet defined!'
-  });
-};
+exports.getUser = factory.getOne(User);
 
 //! Update user deatils as Admin
-exports.patchUser = (Request, Response) => {
-  Response.status(500).json({
-    status: 'error',
-    message: 'This User route is not yet defined!'
-  });
-};
+exports.patchUser = factory.updateOne(User);
 
 //! Delete User as Admin
-exports.deleteUser = (Request, Response) => {
-  Response.status(500).json({
-    status: 'error',
-    message: 'This User route is not yet defined!'
-  });
-};
+exports.deleteUser = factory.deleteOne(User);
