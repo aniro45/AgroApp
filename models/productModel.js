@@ -94,7 +94,7 @@ const ProductSchema = new mongoose.Schema(
       default: Date.now(),
       select: false
     },
-    rating: {
+    ratingsAverage: {
       type: Number,
       required: false,
       min: [1, 'rating must be Atleat 1.0'],
@@ -135,6 +135,8 @@ const ProductSchema = new mongoose.Schema(
 
 //Indexing and complext schema Apply
 ProductSchema.index({ name: 1, weight: 1 }, { unique: true });
+
+ProductSchema.index({ price: 1, ratingsAverage: -1 });
 
 //Virtual Properties
 ProductSchema.virtual('unit').get(function() {
