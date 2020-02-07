@@ -34,13 +34,21 @@ router.route('/product-stats').get(productController.productStats);
 //! Regular Routes
 router
   .route('/')
-  .get(authController.protect, productController.getAllproducts)
-  .post(productController.createNewProduct);
+  .get(productController.getAllproducts)
+  .post(
+    authController.protect,
+    authController.restrictTo('admin', 'seller'),
+    productController.createProduct
+  );
 
 router
   .route('/:id')
   .get(productController.getProduct)
-  .patch(productController.patchProduct)
+  .patch(
+    authController.protect,
+    authController.restrictTo('admin', 'seller'),
+    productController.patchProduct
+  )
   .delete(
     authController.protect,
     authController.restrictTo('admin', 'seller'),

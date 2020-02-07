@@ -13,15 +13,18 @@ router.post('/login', authController.login);
 router.post('/forgotPassword', authController.forgotPassword);
 router.patch('/resetPassword/:token', authController.resetPassword);
 
-//! Route to handle operations while user is logged in
-router.patch(
-  '/updateMyPassword',
-  authController.protect,
-  authController.updatePassword
-);
-router.patch('/updateMe', authController.protect, userController.updateMe);
-router.delete('/deleteMe', authController.protect, userController.deleteMe);
+//This middle ware Run before every routes from below!
+router.use(authController.protect);
 
+//! Route to handle operations while user is logged in
+router.patch('/updateMyPassword', authController.updatePassword);
+
+router.get('/me', userController.getMe, userController.getUser);
+router.patch('/updateMe', userController.updateMe);
+router.delete('/deleteMe', userController.deleteMe);
+
+//This middle ware Run before every routes from below!
+router.use(authController.restrictTo('admin'));
 //! Basic Routes
 router
   .route('/')
@@ -30,9 +33,8 @@ router
 
 router
   .route('/:id')
-  .get(userController.getSingleUser)
+  .get(userController.getUser)
   .patch(userController.patchUser)
   .delete(userController.deleteUser);
-
 
 module.exports = router;
