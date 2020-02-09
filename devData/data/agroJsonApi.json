@@ -16,10 +16,10 @@
     "imageCover": "tatamida.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.7,
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 0,
     "description": "Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"
   },
-
   {
     "name": "TataMida",
     "component": "imidachloprid 17.7% SL",
@@ -37,7 +37,8 @@
     "imageCover": "tatamida.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.7,
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 0,
     "description": "Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"
   },
   {
@@ -57,7 +58,8 @@
     "imageCover": "tatamida.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.7,
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 0,
     "description": "Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"
   },
   {
@@ -77,10 +79,10 @@
     "imageCover": "tatamida.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.7,
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 0,
     "description": "Tatamida belongs to the modern Neonicotinoisd group of insecticides. It a remarkably high systemic activity against Homopteran insects like Aphids, Whiteflies, Hoppers etc"
   },
-
   {
     "name": "Phoskill",
     "component": "Monocrotophos 36% SL",
@@ -98,7 +100,8 @@
     "imageCover": "phoskill.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.3,
+    "ratingsAverage": 4.3,
+    "ratingsQuantity": 0,
     "description": "CONTACT AND SYSTEMIC INSECTICIDE. Effective against Caterpiller pests and sucking pests, as it has systemic and contact action."
   },
   {
@@ -118,10 +121,10 @@
     "imageCover": "phoskill.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.3,
+    "ratingsAverage": 4.3,
+    "ratingsQuantity": 0,
     "description": "CONTACT AND SYSTEMIC INSECTICIDE. Effective against Caterpiller pests and sucking pests, as it has systemic and contact action."
   },
-
   {
     "name": "Phoskill",
     "component": "Monocrotophos 36% SL",
@@ -139,10 +142,10 @@
     "imageCover": "phoskill.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.3,
+    "ratingsAverage": 4.3,
+    "ratingsQuantity": 0,
     "description": "CONTACT AND SYSTEMIC INSECTICIDE. Effective against Caterpiller pests and sucking pests, as it has systemic and contact action."
   },
-
   {
     "name": "Phoskill",
     "component": "Monocrotophos 36% SL",
@@ -160,10 +163,10 @@
     "imageCover": "phoskill.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.3,
+    "ratingsAverage": 4.3,
+    "ratingsQuantity": 0,
     "description": "CONTACT AND SYSTEMIC INSECTICIDE. Effective against Caterpiller pests and sucking pests, as it has systemic and contact action."
   },
-
   {
     "name": "Asataf",
     "component": "75% SP formulation of Acephate",
@@ -181,10 +184,10 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "Asataf is a 75% SP formulation of Acephate, a versatile organophosphate insecticide with both contact and systemic action"
   },
-
   {
     "name": "Asataf",
     "component": "75% SP formulation of Acephate",
@@ -202,10 +205,10 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "Asataf is a 75% SP formulation of Acephate, a versatile organophosphate insecticide with both contact and systemic action"
   },
-
   {
     "name": "Asataf",
     "component": "75% SP formulation of Acephate",
@@ -223,10 +226,10 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "Asataf is a 75% SP formulation of Acephate, a versatile organophosphate insecticide with both contact and systemic action"
   },
-
   {
     "name": "Asataf",
     "component": "75% SP formulation of Acephate",
@@ -244,10 +247,10 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "Asataf is a 75% SP formulation of Acephate, a versatile organophosphate insecticide with both contact and systemic action"
   },
-
   {
     "name": "Saaf",
     "component": "Carbendazim 12% + Mancozeb 63% WP",
@@ -265,10 +268,9 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
     "description": "Contact and Systemic action Crops: Groundnut, Fruits, Vegetables, Rice"
   },
-
   {
     "name": "Saaf",
     "component": "Carbendazim 12% + Mancozeb 63% WP",
@@ -286,10 +288,10 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "Contact and Systemic action Crops: Groundnut, Fruits, Vegetables, Rice"
   },
-
   {
     "name": "Saaf",
     "component": "Carbendazim 12% + Mancozeb 63% WP",
@@ -307,10 +309,10 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "Contact and Systemic action Crops: Groundnut, Fruits, Vegetables, Rice"
   },
-
   {
     "name": "Saaf",
     "component": "Carbendazim 12% + Mancozeb 63% WP",
@@ -328,7 +330,8 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "Contact and Systemic action Crops: Groundnut, Fruits, Vegetables, Rice"
   },
   {
@@ -348,7 +351,8 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": " Stem Borer, Hoppers, Shootfly, Aphid, Borers, Sucking Pest"
   },
   {
@@ -368,7 +372,8 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": " Stem Borer, Hoppers, Shootfly, Aphid, Borers, Sucking Pest"
   },
   {
@@ -388,7 +393,8 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": " Stem Borer, Hoppers, Shootfly, Aphid, Borers, Sucking Pest"
   },
   {
@@ -408,7 +414,8 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": " Stem Borer, Hoppers, Shootfly, Aphid, Borers, Sucking Pest"
   },
   {
@@ -428,7 +435,8 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "ELPIDA INSECTICIDE is effective against Lepidoptera larvae resistant to organophosphates, pyrethroids and insect growth regulators"
   },
   {
@@ -448,7 +456,8 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "ELPIDA INSECTICIDE is effective against Lepidoptera larvae resistant to organophosphates, pyrethroids and insect growth regulators"
   },
   {
@@ -468,7 +477,8 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "ELPIDA INSECTICIDE is effective against Lepidoptera larvae resistant to organophosphates, pyrethroids and insect growth regulators"
   },
   {
@@ -488,7 +498,8 @@
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
-    "rating": 4.5,
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 0,
     "description": "ELPIDA INSECTICIDE is effective against Lepidoptera larvae resistant to organophosphates, pyrethroids and insect growth regulators"
   }
 ]
