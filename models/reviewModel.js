@@ -1,6 +1,7 @@
 //Review //rating //createdAt //ref to Tour //ref to user
 
 const mongoose = require('mongoose');
+const Product = require(`${__dirname}/productModel`);
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -36,6 +37,8 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
+reviewSchema.index({ product: 1, user: 1 }, { unique: 1 });
+
 //Populate for Parenting or parenting normalization
 reviewSchema.pre(/^find/, function(next) {
   // this.populate({
@@ -52,6 +55,50 @@ reviewSchema.pre(/^find/, function(next) {
     select: 'name photo'
   });
   next();
+});
+
+reviewSchema.statics.calcAverageRatings = async function(productId) {
+  const stats = await this.aggregate([
+    {
+      $match: { product: productId }
+    },
+    {
+      $group: {
+        _id: 'product',
+        nRatings: { $sum: 1 },
+        avgRating: { $avg: '$rating' }
+      }
+    }
+  ]);
+  console.log(stats);
+
+  if (stats.length > 0) {
+    await Product.findByIdAndUpdate(productId, {
+      ratingsQuantity: stats[0].nRatings,
+      ratingsAverage: stats[0].avgRating
+    });
+  } else {
+    await Product.findByIdAndUpdate(productId, {
+      ratingsQuantity: 0,
+      ratingsAverage: 4.5
+    });
+  }
+};
+
+reviewSchema.post('save', function() {
+  //this points to current review
+  this.constructor.calcAverageRatings(this.product);
+});
+
+reviewSchema.pre(/^findOneAnd/, async function(next) {
+  this.r = await this.findOne();
+  console.log(this.r);
+  next();
+});
+
+reviewSchema.post(/^findOneAnd/, async function() {
+  // const r = await this.findOne(); does not work her, query has already executed
+  await this.r.constructor.calcAverageRatings(this.r.product);
 });
 
 const Review = mongoose.model('review', reviewSchema);
