@@ -96,9 +96,14 @@ const ProductSchema = new mongoose.Schema(
     },
     ratingsAverage: {
       type: Number,
-      required: false,
+      default: 4.5,
       min: [1, 'rating must be Atleat 1.0'],
-      max: [5, 'rating must be Atmost 5.0']
+      max: [5, 'rating must be Atmost 5.0'],
+      set: val => Math.round(val * 10) / 10 //4.6666, 4.7 47 4.7
+    },
+    ratingsQuantity: {
+      type: Number,
+      default: 0
     },
     description: {
       type: String,
@@ -110,7 +115,7 @@ const ProductSchema = new mongoose.Schema(
       type: Boolean,
       dafault: false
     },
-    sllerLocation: {
+    sellerLocation: {
       type: {
         type: String,
         default: 'Point',
