@@ -67,3 +67,39 @@ exports.productStats = catchAsync(async (Request, Response, next) => {
     }
   });
 });
+
+// products-within?distance=233&center=-40,45&unit=mi
+// products-within/233/18.448048, 73.858400/unit/mi
+//{{URL}}/api/v1/products/sellers-within/233/center/18.448048, 73.858400/unit/mi
+
+exports.getProductsWithin = catchAsync(async (Request, Response, next) => {
+  const { distance, latlng, unit } = Request.params;
+  const [lat, lng] = latlng.split(',');
+
+  const radius = unit === 'mi' ? distance / 3963.2 : distance / 6378.1;
+
+  if (!lat || !lng) {
+    next(
+      new AppError(
+        'Please provide latitude and longitude in their respective format',
+        400
+      )
+    );
+  }
+
+  console.log(distance, lat, lng, unit);
+
+  const products = await Products.find({
+    productLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } }
+  });
+
+  console.log('Products: ' + products);
+
+  Response.status(200).json({
+    status: 'success',
+    results: products.length,
+    data: {
+      data: products
+    }
+  });
+});
