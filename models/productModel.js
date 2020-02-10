@@ -115,14 +115,16 @@ const ProductSchema = new mongoose.Schema(
       type: Boolean,
       dafault: false
     },
-    sellerLocation: {
+    productLocation: {
+      // GeoJSON
       type: {
         type: String,
         default: 'Point',
         enum: ['Point']
       },
       coordinates: [Number],
-      address: String
+      address: String,
+      description: String
     },
     // sellers: Array //Embedding
     sellers: [
@@ -142,6 +144,8 @@ const ProductSchema = new mongoose.Schema(
 ProductSchema.index({ name: 1, weight: 1 }, { unique: true });
 
 ProductSchema.index({ price: 1, ratingsAverage: -1 });
+
+ProductSchema.index({ productLocation: '2dsphere' });
 
 //Virtual Properties
 ProductSchema.virtual('unit').get(function() {
