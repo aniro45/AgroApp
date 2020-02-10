@@ -13,6 +13,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Rameshwar Agro Agency",
+      "type": "Point",
+      "coordinates": [18.677448, 75.835779],
+      "address": "Bajar tal, Nandur Ghat"
+    },
     "imageCover": "tatamida.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -33,6 +39,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Rameshwar Agro Agency",
+      "type": "Point",
+      "coordinates": [18.677448, 75.835779],
+      "address": "Bajar tal, Nandur Ghat"
     },
     "imageCover": "tatamida.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
@@ -55,6 +67,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Rameshwar Agro Agency",
+      "type": "Point",
+      "coordinates": [18.677448, 75.835779],
+      "address": "Bajar tal, Nandur Ghat"
+    },
     "imageCover": "tatamida.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -75,6 +93,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Rameshwar Agro Agency",
+      "type": "Point",
+      "coordinates": [18.677448, 75.835779],
+      "address": "Bajar tal, Nandur Ghat"
     },
     "imageCover": "tatamida.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
@@ -97,6 +121,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Rameshwar Agro Agency",
+      "type": "Point",
+      "coordinates": [18.677448, 75.835779],
+      "address": "Bajar tal, Nandur Ghat"
+    },
     "imageCover": "phoskill.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -117,6 +147,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Rameshwar Agro Agency",
+      "type": "Point",
+      "coordinates": [18.677448, 75.835779],
+      "address": "Bajar tal, Nandur Ghat"
     },
     "imageCover": "phoskill.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
@@ -139,6 +175,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Nagaraj Krishi seva Kendra",
+      "type": "Point",
+      "coordinates": [18.258982, 75.112937],
+      "address": "Jeur Chiklthan Road"
+    },
     "imageCover": "phoskill.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -159,6 +201,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Nagaraj Krishi seva Kendra",
+      "type": "Point",
+      "coordinates": [18.258982, 75.112937],
+      "address": "Jeur Chiklthan Road"
     },
     "imageCover": "phoskill.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
@@ -181,6 +229,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Nagaraj Krishi seva Kendra",
+      "type": "Point",
+      "coordinates": [18.258982, 75.112937],
+      "address": "Jeur Chiklthan Road"
+    },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -201,6 +255,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Nagaraj Krishi seva Kendra",
+      "type": "Point",
+      "coordinates": [18.258982, 75.112937],
+      "address": "Jeur Chiklthan Road"
     },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
@@ -223,6 +283,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Nagaraj Krishi seva Kendra",
+      "type": "Point",
+      "coordinates": [18.258982, 75.112937],
+      "address": "Jeur Chiklthan Road"
+    },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -243,6 +309,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Kalantri Agro Beed",
+      "type": "Point",
+      "coordinates": [19.000031, 75.764491],
+      "address": "Old ondha Road,Beed"
     },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
@@ -265,6 +337,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Kalantri Agro Beed",
+      "type": "Point",
+      "coordinates": [19.000031, 75.764491],
+      "address": "Old ondha Road,Beed"
+    },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -284,6 +362,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Kalantri Agro Beed",
+      "type": "Point",
+      "coordinates": [19.000031, 75.764491],
+      "address": "Old ondha Road,Beed"
     },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
@@ -306,6 +390,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Kalantri Agro Beed",
+      "type": "Point",
+      "coordinates": [19.000031, 75.764491],
+      "address": "Old ondha Road,Beed"
+    },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -326,6 +416,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Kalantri Agro Beed",
+      "type": "Point",
+      "coordinates": [19.000031, 75.764491],
+      "address": "Old ondha Road,Beed"
     },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
@@ -348,6 +444,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Kalantri Agro Beed",
+      "type": "Point",
+      "coordinates": [19.000031, 75.764491],
+      "address": "Old ondha Road,Beed"
+    },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -369,6 +471,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Baramati Agro Shop, Pune",
+      "type": "Point",
+      "coordinates": [18.156457, 74.183507],
+      "address": "Pune Maharashtra"
+    },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -389,6 +497,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Baramati Agro Shop, Pune",
+      "type": "Point",
+      "coordinates": [18.156457, 74.183507],
+      "address": "Pune Maharashtra"
     },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
@@ -411,6 +525,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Baramati Agro Shop, Pune",
+      "type": "Point",
+      "coordinates": [18.156457, 74.183507],
+      "address": "Pune Maharashtra"
+    },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -431,6 +551,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Baramati Agro Shop, Pune",
+      "type": "Point",
+      "coordinates": [18.156457, 74.183507],
+      "address": "Pune Maharashtra"
     },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
@@ -453,6 +579,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Baramati Agro Shop, Pune",
+      "type": "Point",
+      "coordinates": [18.156457, 74.183507],
+      "address": "Pune Maharashtra"
+    },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -474,6 +606,12 @@
       "date": "1579808959014",
       "quantiyArrived": 40
     },
+    "productLocation": {
+      "description": "Baramati Agro Shop, Pune",
+      "type": "Point",
+      "coordinates": [18.156457, 74.183507],
+      "address": "Pune Maharashtra"
+    },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
     "createdAt": "1579808959014",
@@ -494,6 +632,12 @@
     "onDate": {
       "date": "1579808959014",
       "quantiyArrived": 40
+    },
+    "productLocation": {
+      "description": "Baramati Agro Shop, Pune",
+      "type": "Point",
+      "coordinates": [18.156457, 74.183507],
+      "address": "Pune Maharashtra"
     },
     "imageCover": "asataf.jpg",
     "images": ["image1,", "image2", "image3", "imagex"],
