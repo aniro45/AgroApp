@@ -31,6 +31,13 @@ router.route('/test-route').get();
 //! Aggregation Pipeling stats
 router.route('/product-stats').get(productController.productStats);
 
+//! GeoSpatial Routes
+// products-within?distance=233&center=-40,45&unit=mi
+// products-within/233/-40,45/unit/mi
+router
+  .route('/products-within/:distance/center/:latlng/unit/:unit')
+  .get(productController.getProductsWithin);
+
 //! Regular Routes
 router
   .route('/')
