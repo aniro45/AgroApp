@@ -16,7 +16,7 @@
     "productLocation": {
       "description": "Rameshwar Agro Agency",
       "type": "Point",
-      "coordinates": [18.677448, 75.835779],
+      "coordinates": [75.835779, 18.677448],
       "address": "Bajar tal, Nandur Ghat"
     },
     "imageCover": "tatamida.jpg",
@@ -43,7 +43,7 @@
     "productLocation": {
       "description": "Rameshwar Agro Agency",
       "type": "Point",
-      "coordinates": [18.677448, 75.835779],
+      "coordinates": [75.835779, 18.677448],
       "address": "Bajar tal, Nandur Ghat"
     },
     "imageCover": "tatamida.jpg",
@@ -70,7 +70,7 @@
     "productLocation": {
       "description": "Rameshwar Agro Agency",
       "type": "Point",
-      "coordinates": [18.677448, 75.835779],
+      "coordinates": [75.835779, 18.677448],
       "address": "Bajar tal, Nandur Ghat"
     },
     "imageCover": "tatamida.jpg",
@@ -97,7 +97,7 @@
     "productLocation": {
       "description": "Rameshwar Agro Agency",
       "type": "Point",
-      "coordinates": [18.677448, 75.835779],
+      "coordinates": [75.835779, 18.677448],
       "address": "Bajar tal, Nandur Ghat"
     },
     "imageCover": "tatamida.jpg",
@@ -124,7 +124,7 @@
     "productLocation": {
       "description": "Rameshwar Agro Agency",
       "type": "Point",
-      "coordinates": [18.677448, 75.835779],
+      "coordinates": [75.835779, 18.677448],
       "address": "Bajar tal, Nandur Ghat"
     },
     "imageCover": "phoskill.jpg",
@@ -151,7 +151,7 @@
     "productLocation": {
       "description": "Rameshwar Agro Agency",
       "type": "Point",
-      "coordinates": [18.677448, 75.835779],
+      "coordinates": [75.835779, 18.677448],
       "address": "Bajar tal, Nandur Ghat"
     },
     "imageCover": "phoskill.jpg",
@@ -178,7 +178,7 @@
     "productLocation": {
       "description": "Nagaraj Krishi seva Kendra",
       "type": "Point",
-      "coordinates": [18.258982, 75.112937],
+      "coordinates": [75.112937, 18.258982],
       "address": "Jeur Chiklthan Road"
     },
     "imageCover": "phoskill.jpg",
@@ -205,7 +205,7 @@
     "productLocation": {
       "description": "Nagaraj Krishi seva Kendra",
       "type": "Point",
-      "coordinates": [18.258982, 75.112937],
+      "coordinates": [75.112937, 18.258982],
       "address": "Jeur Chiklthan Road"
     },
     "imageCover": "phoskill.jpg",
@@ -232,7 +232,7 @@
     "productLocation": {
       "description": "Nagaraj Krishi seva Kendra",
       "type": "Point",
-      "coordinates": [18.258982, 75.112937],
+      "coordinates": [75.112937, 18.258982],
       "address": "Jeur Chiklthan Road"
     },
     "imageCover": "asataf.jpg",
@@ -259,7 +259,7 @@
     "productLocation": {
       "description": "Nagaraj Krishi seva Kendra",
       "type": "Point",
-      "coordinates": [18.258982, 75.112937],
+      "coordinates": [75.112937, 18.258982],
       "address": "Jeur Chiklthan Road"
     },
     "imageCover": "asataf.jpg",
@@ -286,7 +286,7 @@
     "productLocation": {
       "description": "Nagaraj Krishi seva Kendra",
       "type": "Point",
-      "coordinates": [18.258982, 75.112937],
+      "coordinates": [75.112937, 18.258982],
       "address": "Jeur Chiklthan Road"
     },
     "imageCover": "asataf.jpg",
@@ -313,7 +313,7 @@
     "productLocation": {
       "description": "Kalantri Agro Beed",
       "type": "Point",
-      "coordinates": [19.000031, 75.764491],
+      "coordinates": [75.764491, 19.000031],
       "address": "Old ondha Road,Beed"
     },
     "imageCover": "asataf.jpg",
@@ -340,7 +340,7 @@
     "productLocation": {
       "description": "Kalantri Agro Beed",
       "type": "Point",
-      "coordinates": [19.000031, 75.764491],
+      "coordinates": [75.764491, 19.000031],
       "address": "Old ondha Road,Beed"
     },
     "imageCover": "asataf.jpg",
@@ -366,7 +366,7 @@
     "productLocation": {
       "description": "Kalantri Agro Beed",
       "type": "Point",
-      "coordinates": [19.000031, 75.764491],
+      "coordinates": [75.764491, 19.000031],
       "address": "Old ondha Road,Beed"
     },
     "imageCover": "asataf.jpg",
@@ -393,7 +393,7 @@
     "productLocation": {
       "description": "Kalantri Agro Beed",
       "type": "Point",
-      "coordinates": [19.000031, 75.764491],
+      "coordinates": [75.764491, 19.000031],
       "address": "Old ondha Road,Beed"
     },
     "imageCover": "asataf.jpg",
@@ -420,7 +420,7 @@
     "productLocation": {
       "description": "Kalantri Agro Beed",
       "type": "Point",
-      "coordinates": [19.000031, 75.764491],
+      "coordinates": [75.764491, 19.000031],
       "address": "Old ondha Road,Beed"
     },
     "imageCover": "asataf.jpg",
@@ -447,7 +447,7 @@
     "productLocation": {
       "description": "Kalantri Agro Beed",
       "type": "Point",
-      "coordinates": [19.000031, 75.764491],
+      "coordinates": [75.764491, 19.000031],
       "address": "Old ondha Road,Beed"
     },
     "imageCover": "asataf.jpg",
@@ -474,7 +474,7 @@
     "productLocation": {
       "description": "Baramati Agro Shop, Pune",
       "type": "Point",
-      "coordinates": [18.156457, 74.183507],
+      "coordinates": [74.183507, 18.156457],
       "address": "Pune Maharashtra"
     },
     "imageCover": "asataf.jpg",
@@ -501,7 +501,7 @@
     "productLocation": {
       "description": "Baramati Agro Shop, Pune",
       "type": "Point",
-      "coordinates": [18.156457, 74.183507],
+      "coordinates": [74.183507, 18.156457],
       "address": "Pune Maharashtra"
     },
     "imageCover": "asataf.jpg",
@@ -528,7 +528,7 @@
     "productLocation": {
       "description": "Baramati Agro Shop, Pune",
       "type": "Point",
-      "coordinates": [18.156457, 74.183507],
+      "coordinates": [74.183507, 18.156457],
       "address": "Pune Maharashtra"
     },
     "imageCover": "asataf.jpg",
@@ -555,7 +555,7 @@
     "productLocation": {
       "description": "Baramati Agro Shop, Pune",
       "type": "Point",
-      "coordinates": [18.156457, 74.183507],
+      "coordinates": [74.183507, 18.156457],
       "address": "Pune Maharashtra"
     },
     "imageCover": "asataf.jpg",
@@ -582,7 +582,7 @@
     "productLocation": {
       "description": "Baramati Agro Shop, Pune",
       "type": "Point",
-      "coordinates": [18.156457, 74.183507],
+      "coordinates": [74.183507, 18.156457],
       "address": "Pune Maharashtra"
     },
     "imageCover": "asataf.jpg",
@@ -609,7 +609,7 @@
     "productLocation": {
       "description": "Baramati Agro Shop, Pune",
       "type": "Point",
-      "coordinates": [18.156457, 74.183507],
+      "coordinates": [74.183507, 18.156457],
       "address": "Pune Maharashtra"
     },
     "imageCover": "asataf.jpg",
@@ -636,7 +636,7 @@
     "productLocation": {
       "description": "Baramati Agro Shop, Pune",
       "type": "Point",
-      "coordinates": [18.156457, 74.183507],
+      "coordinates": [74.183507, 18.156457],
       "address": "Pune Maharashtra"
     },
     "imageCover": "asataf.jpg",
