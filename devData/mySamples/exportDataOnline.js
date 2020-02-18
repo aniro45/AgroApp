@@ -49,10 +49,10 @@ try {
 const sendDataToMongodb = async (Request, Response) => {
   try {
     const readedFile = JSON.parse(
-      fs.readFileSync(`${__dirname}/../data/agroJsonApi.json`, 'utf-8')
+      fs.readFileSync(`${__dirname}/../data/productsData.json`, 'utf-8')
     );
     await Products.create(readedFile);
-    console.log('data IMPORTED successfully to mongoDB database!');
+    console.log('data EXPORTED successfully to mongoDB database!');
   } catch (error) {
     console.log('problem Loading Data...' + error);
   }
@@ -77,3 +77,7 @@ if (process.argv[2] === '--import') {
 } else {
   console.log('Operation Fialed!');
 }
+
+//COMMANDS
+// node exportDataOnline.js --import
+// node exportDataOnline.js --delete
