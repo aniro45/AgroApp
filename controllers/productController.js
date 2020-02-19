@@ -74,19 +74,18 @@ exports.getProductsWithin = catchAsync(async (Request, Response, next) => {
   const unit = Request.params.unit;
 
   const [lat, lng] = latlng.split(',');
-  console.log(distance, lat, lng, unit);
+  // console.log(distance, lat, lng, unit);
 
-  let radius;
+  const radius = unit === 'mi' ? distance / 3963.2 : distance / 6378.1;
 
-  if (unit === 'mi') {
-    radius = distance / 3963.2;
-    console.log('If Executed as Mile!');
-  } else {
-    radius = distance / 6378.1;
-    console.log('Else Executed as Km or Other!');
+  if (!lat || !lng) {
+    next(
+      new AppError(
+        'Please Provide lattitude and longitude in their respective format',
+        400
+      )
+    );
   }
-  console.log('radius is: ' + radius);
-
   const products = await Products.find({
     productLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } }
   });
@@ -96,6 +95,50 @@ exports.getProductsWithin = catchAsync(async (Request, Response, next) => {
     results: products.length,
     data: {
       data: products
+    }
+  });
+});
+exports.getDistances = catchAsync(async (Request, Response, next) => {
+  const latlng = Request.params.latlng;
+  const unit = Request.params.unit;
+
+  const [lat, lng] = latlng.split(',');
+  // console.log(lat, lng, unit);
+
+  const multiplier = unit === 'mi' ? 0.000621371 : 0.001;
+
+  if (!lat || !lng) {
+    next(
+      new AppError(
+        'Please Provide lattitude and longitude in their respective format',
+        400
+      )
+    );
+  }
+
+  const distances = await Products.aggregate([
+    {
+      $geoNear: {
+        near: {
+          type: 'Point',
+          coordinates: [lng * 1, lat * 1]
+        },
+        distanceField: 'distance',
+        distanceMultiplier: 0.001
+      }
+    },
+    {
+      $project: {
+        distance: 1,
+        name: 1
+      }
+    }
+  ]);
+
+  Response.status(200).json({
+    status: 'Success',
+    data: {
+      data: distances
     }
   });
 });
