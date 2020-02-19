@@ -206,11 +206,11 @@ ProductSchema.post(/^find/, function(docs, next) {
 });
 
 //Aggrgation Middleware
-ProductSchema.pre('aggregate', function(next) {
-  this.pipeline().unshift({ $match: { privateProduct: { $ne: true } } });
-  console.log(this.pipeline);
-  next();
-});
+// ProductSchema.pre('aggregate', function(next) {
+//   this.pipeline().unshift({ $match: { privateProduct: { $ne: true } } });
+//   console.log(this.pipeline);
+//   next();
+// });
 
 //Creating Model for ProductSchema
 const Products = mongoose.model('produxes', ProductSchema);
