@@ -38,6 +38,10 @@ router
   .route('/products-within/:distance/center/:latlng/unit/:unit')
   .get(productController.getProductsWithin);
 
+router
+  .route('/distances/:latlng/unit/:unit')
+  .get(productController.getDistances);
+
 //! Regular Routes
 router
   .route('/')
