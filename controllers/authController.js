@@ -23,15 +23,18 @@ const createSendToken = (user, statusCode, Response) => {
     ),
     httpOnly: true
   };
-  if (process.env.NODE_ENV === 'production') {
-    cookieOptions.secure = true;
-  }
+
+  //! Only apply when the production envirenment is HTTPS and not HTTP
+  // if (process.env.NODE_ENV === 'production') {
+  //   cookieOptions.secure = true;
+  // }
+
   Response.cookie('jwt', token, cookieOptions);
 
   //Remove password from output
   user.password = undefined;
 
-  Response.status(201).json({
+  Response.status(statusCode).json({
     status: 'success',
     token,
     data: {
@@ -75,6 +78,16 @@ exports.login = catchAsync(async (Request, Response, next) => {
   createSendToken(user, 200, Response);
 });
 
+exports.logout = (Request, Response, next) => {
+  Response.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true
+  });
+  Response.status(200).json({
+    status: 'success'
+  });
+};
+
 //! protect user from changing something without Login
 exports.protect = catchAsync(async (Request, Response, next) => {
   //Getting the tokens and check if its exist
@@ -84,6 +97,8 @@ exports.protect = catchAsync(async (Request, Response, next) => {
     Request.headers.authorization.startsWith('Bearer')
   ) {
     token = Request.headers.authorization.split(' ')[1];
+  } else if (Request.cookies.jwt) {
+    token = Request.cookies.jwt;
   }
 
   if (!token) {
@@ -113,10 +128,43 @@ exports.protect = catchAsync(async (Request, Response, next) => {
       new AppError('User Recently changed password!PLease Login Again.', 401)
     );
   }
+
   //GRANT  ACCESS DATA TO PROTECTED ROUT!
   Request.user = currentUser;
+  Response.locals.user = currentUser;
   next();
 });
+
+//! Only for rendered Pages and no errors
+exports.isLoggedIn = async (Request, Response, next) => {
+  if (Request.cookies.jwt) {
+    try {
+      //verfication of token
+      const decoded = await promisify(jwt.verify)(
+        Request.cookies.jwt,
+        process.env.JWT_SECRET
+      );
+
+      //check if user still exist
+      const currentUser = await User.findById(decoded.id);
+      if (!currentUser) {
+        return next();
+      }
+
+      //check if user changed password after the token was recieved
+      if (currentUser.changedPasswordAfter(decoded.iat)) {
+        //iat=issuedAt
+        return next();
+      }
+      //THERE IS LOGGED IN USER
+      Response.locals.user = currentUser;
+      return next();
+    } catch (err) {
+      return next();
+    }
+  }
+  next();
+};
 
 //! Restriction method for users and not admin and dev
 exports.restrictTo = (...roles) => {
