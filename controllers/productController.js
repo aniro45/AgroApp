@@ -15,7 +15,7 @@ exports.aliasCheapProducts = (Request, Response, next) => {
   next();
 };
 
-//! Get Full list of
+// Get Full list of
 exports.allProduxes = catchAsync(async (Request, Response, next) => {
   const getFullList = Products.find();
 });
