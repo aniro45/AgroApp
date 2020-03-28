@@ -1,4 +1,5 @@
 // const fs = require('fs'  );
+const path = require('path');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -7,15 +8,25 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
 
 const productRouter = require(`${__dirname}/routes/productRoutes.js`);
 const userRouter = require(`${__dirname}/routes/userRoutes.js`);
 const reviewRouter = require(`${__dirname}/routes/reviewRoutes`);
+const viewRouter = require(`${__dirname}/routes/viewRoutes`);
 
 const AppError = require(`${__dirname}/utils/appError.js`);
 const GlobalErrorHandler = require(`${__dirname}/controllers/errorController.js`);
 
-// console.log(app.get('env')); //! to get Environment if it is dev or production
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+//!Serving static file in route
+// app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, 'public')));
+
+//! to get Environment if it is dev or production
+// console.log(app.get('env'));
 
 //! Set security HTTP headers
 app.use(helmet());
@@ -33,8 +44,14 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-//! Body parser, REasing data from body into request.body
+//! Body parser, Reading data from body into request.body
 app.use(express.json({ limit: '10kb' }));
+
+//!for HTML form which is urlencoded data
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+
+//! Cookie Parser, reading data from cookie
+app.use(cookieParser());
 
 //! Data Sanitization Against NoSQL query Injection
 app.use(mongoSanitize());
@@ -58,9 +75,6 @@ app.use(
   })
 );
 
-//!Serving static file in route
-app.use(express.static(`${__dirname}/public`));
-
 //! Sample to check request
 app.use((Request, Response, next) => {
   console.log('Hello From ॐ  Middleware!');
@@ -70,6 +84,7 @@ app.use((Request, Response, next) => {
 //! To get the time of request
 app.use((Request, Response, next) => {
   Request.requestTime = new Date().toISOString();
+  // console.log(Request.cookies); //!Cookie Parser
   next();
 });
 
@@ -79,6 +94,7 @@ const blankRoute = (Request, Response) => {
 };
 
 //! Routes Middleware
+app.use('/', viewRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
