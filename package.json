@@ -7,13 +7,18 @@
     "start": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
     "start:dev": "NODE_ENV=development nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
   "author": "Aniket Jadhav",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-mongo-sanitize": "^1.3.2",
@@ -24,12 +29,14 @@
     "mongoose": "^5.8.9",
     "morgan": "^1.9.1",
     "nodemailer": "^6.4.2",
+    "pug": "^2.0.4",
     "slugify": "^1.3.6",
     "validator": "^12.2.0",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
     "ndb": "^1.1.5",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "parcel-bundler": "^1.12.4"
   }
 }
