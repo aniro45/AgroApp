@@ -1,0 +1,50 @@
+extends base
+
+block content
+  
+    main.main
+        .card-container
+            each product in products
+            
+                .card
+                    .card__header
+                        .card__picture
+                            .card__picture-overlay &nbsp;
+                            img.card__picture-img(src=`/img/tours/${product.imageCover}` alt=`${product.name}`)
+                        h3.heading-tertirary
+                            span= product.name
+                    .card__details
+                        h4.card__sub-heading A Revoultinary TATA product
+                        p.card__text= product.description
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href='/img/icons.svg#icon-map-pin')
+                            span= product.productLocation.description
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href='/img/icons.svg#icon-calender')
+                            span= product.form
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href='/img/icons.svg#icon-flag')
+                            span= product.company
+                            
+                        .card__data
+                            svg.card__icon
+                                use(xlink:href='/img/icons.svg#icon-user')
+
+                            -   if(product.form === 'solid')     
+                                span= `${product.weight * 1000} gm`
+                            -   if(product.form === 'liquid')
+                                span= `${product.weight * 1000} ml`  
+                    .card__footer
+                        p 
+                             
+                            span.card__footer-value= `₹ ${product.price}`
+                            | 
+                            span.card__footer-text &nbsp;Per Item   
+                        p.card__ratings 
+                            span.card__footer-value= product.ratingsAverage
+                            | 
+                            span.card__footer-text= `Rating (${product.ratingsQuantity})`   
+                        a.btn.btn--green.btn--small(href=`/product/${product.slug}`) Details
