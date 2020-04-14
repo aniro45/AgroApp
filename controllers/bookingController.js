@@ -49,7 +49,7 @@ exports.createBookingCheckout = catchAsync(async (Request, Response, next) => {
 
   if (!product && !user && !price) return next();
   await Booking.create({ product, user, price });
-  console.log(product, user, price);
+
   Response.redirect(Request.originalUrl.split('?')[0]);
 });
 

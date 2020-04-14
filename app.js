@@ -9,6 +9,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const productRouter = require(`${__dirname}/routes/productRoutes.js`);
 const userRouter = require(`${__dirname}/routes/userRoutes.js`);
@@ -75,6 +76,9 @@ app.use(
     ],
   })
 );
+
+//! For Compression Text
+app.use(compression());
 
 //! Sample to check request
 app.use((Request, Response, next) => {

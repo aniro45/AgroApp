@@ -6,12 +6,12 @@ const User = require(`${__dirname}/userModel`);
 const onDateSchema = new mongoose.Schema({
   date: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
   },
   quantiyArrived: {
     type: Number,
-    required: false
-  }
+    required: false,
+  },
 });
 
 const ProductSchema = new mongoose.Schema(
@@ -21,7 +21,7 @@ const ProductSchema = new mongoose.Schema(
       required: [true, 'A product must have name'],
       trim: true,
       minlength: [3, 'A product name must have atleast 3 charachters'],
-      maxlength: [30, 'A product name must have atmost 30 charachters']
+      maxlength: [30, 'A product name must have atmost 30 charachters'],
       // validate: [
       //   validator.isAlpha,
       //   // validator.matches(/^[a-zA-Z]+$/i),
@@ -33,110 +33,110 @@ const ProductSchema = new mongoose.Schema(
     },
     component: {
       type: String,
-      required: [true, 'A tour must have product component']
+      required: [true, 'A tour must have product component'],
     },
     weight: {
       type: Number,
-      required: [true, 'A product must have weight']
+      required: [true, 'A product must have weight'],
     },
     company: {
       type: String,
       required: [true, 'A product must have company'],
-      trim: true
+      trim: true,
     },
     totalQuantity: {
       type: Number,
-      required: [true, 'A product must have total quantity']
+      required: [true, 'A product must have total quantity'],
     },
     type: {
       type: String,
       default: 'Pesticide',
-      trim: true
+      trim: true,
     },
     category: {
       type: String,
       required: [true, 'A tour must have a category'],
-      trim: true
+      trim: true,
     },
     form: {
       type: String,
       required: [true, 'A product must have form'],
       enum: {
         values: ['solid', 'liquid'],
-        message: 'form should be either solid or liquid'
-      }
+        message: 'form should be either solid or liquid',
+      },
     },
     price: {
       type: Number,
-      required: [true, 'A product must have price']
+      required: [true, 'A product must have price'],
     },
     priceDiscount: {
       type: Number,
       validate: {
-        validator: function(val) {
+        validator: function (val) {
           //this only points to current doc on NEW document creation.
           return val < this.price;
         },
-        message: 'price discount must be less than price'
-      }
+        message: 'price discount must be less than price',
+      },
     },
     onDate: {
-      type: onDateSchema
+      type: onDateSchema,
     },
     imageCover: {
       type: String,
-      required: [true, 'A product must have cover Image']
+      required: [true, 'A product must have cover Image'],
     },
     images: [String],
 
     createdAt: {
       type: Date,
       default: Date.now(),
-      select: false
+      select: false,
     },
     ratingsAverage: {
       type: Number,
       default: 4.5,
       min: [1, 'rating must be Atleat 1.0'],
       max: [5, 'rating must be Atmost 5.0'],
-      set: val => Math.round(val * 10) / 10 //4.6666, 4.7 47 4.7
+      set: (val) => Math.round(val * 10) / 10, //4.6666, 4.7 47 4.7
     },
     ratingsQuantity: {
       type: Number,
-      default: 0
+      default: 0,
     },
     description: {
       type: String,
       required: false,
-      trim: true
+      trim: true,
     },
     slug: String,
     privateProduct: {
       type: Boolean,
-      dafault: false
+      dafault: false,
     },
     productLocation: {
       // GeoJSON
       type: {
         type: String,
         default: 'Point',
-        enum: ['Point']
+        enum: ['Point'],
       },
       coordinates: [Number],
       address: String,
-      description: String
+      description: String,
     },
     // sellers: Array //Embedding
     sellers: [
       {
         type: mongoose.Schema.ObjectId,
-        ref: 'usex'
-      }
-    ]
+        ref: 'usex',
+      },
+    ],
   },
   {
     toJSON: { virtuals: true },
-    toObject: { virtuals: true }
+    toObject: { virtuals: true },
   }
 );
 
@@ -148,7 +148,7 @@ ProductSchema.index({ price: 1, ratingsAverage: -1 });
 ProductSchema.index({ productLocation: '2dsphere' });
 
 //Virtual Properties
-ProductSchema.virtual('unit').get(function() {
+ProductSchema.virtual('unit').get(function () {
   return this.weight * 1000;
 });
 
@@ -156,11 +156,11 @@ ProductSchema.virtual('unit').get(function() {
 ProductSchema.virtual('reviews', {
   ref: 'review',
   foreignField: 'product',
-  localField: '_id'
+  localField: '_id',
 });
 
 //Document Middleware
-ProductSchema.pre('save', function(next) {
+ProductSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
   next();
 });
@@ -184,7 +184,7 @@ ProductSchema.pre('save', function(next) {
 
 //Query Middleware
 // ProductSchema.pre('find', function(next) {
-ProductSchema.pre(/^find/, function(next) {
+ProductSchema.pre(/^find/, function (next) {
   //reguler expression for "find" to cover "findOne"
   this.find({ privateProduct: { $ne: true } });
   this.start = Date.now();
@@ -192,18 +192,18 @@ ProductSchema.pre(/^find/, function(next) {
 });
 
 //populate or child normilization
-ProductSchema.pre(/^find/, function(next) {
+ProductSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'sellers',
-    select: '-__v -passwordChangedAt'
+    select: '-__v -passwordChangedAt',
   });
   next();
 });
 
-ProductSchema.post(/^find/, function(docs, next) {
-  console.log(`query took ${Date.now() - this.start} millisecond`);
-  next();
-});
+// ProductSchema.post(/^find/, function(docs, next) {
+//   console.log(`query took ${Date.now() - this.start} millisecond`);
+//   next();
+// });
 
 //Aggrgation Middleware
 // ProductSchema.pre('aggregate', function(next) {

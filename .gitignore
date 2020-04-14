@@ -3,3 +3,4 @@ node_modules/
 pkglc.txt
 users
 *.gitignore
+.cache/

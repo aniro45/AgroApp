@@ -71,7 +71,7 @@ const sendErrorProd = (error, Request, Response) => {
   }
   //programming Or other unkonwn errors : dont leak error details
   //Log Error
-  console.log('Error', error);
+  // console.log('Error', error);
 
   //Send generic message
   return Response.status(error.statusCode).render('error', {

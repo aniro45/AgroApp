@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 if (process.env.NODE_ENV === 'production') {
-  process.on('uncaughtException', error => {
+  process.on('uncaughtException', (error) => {
     console.log('Uncaught Exception! Shutting Down...');
     console.log(error.name, error.message);
     process.exit(1);
@@ -31,9 +31,9 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
-  .then(con => {
+  .then((con) => {
     if (
       DB ===
       process.env.DATABASE_ONLINE.replace('<PASSWORD>', process.env.DB_PASSWORD)
@@ -53,7 +53,7 @@ const server = app.listen(port, () => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-  process.on('unhandledRejection', error => {
+  process.on('unhandledRejection', (error) => {
     console.log(error.name, error.message);
     console.log('UNdandler Rejection! Shutting Down...');
     server.close(() => {
