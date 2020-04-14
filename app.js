@@ -13,6 +13,7 @@ const cookieParser = require('cookie-parser');
 const productRouter = require(`${__dirname}/routes/productRoutes.js`);
 const userRouter = require(`${__dirname}/routes/userRoutes.js`);
 const reviewRouter = require(`${__dirname}/routes/reviewRoutes`);
+const bookingRouter = require(`${__dirname}/routes/bookingRoutes.js`);
 const viewRouter = require(`${__dirname}/routes/viewRoutes`);
 
 const AppError = require(`${__dirname}/utils/appError.js`);
@@ -40,7 +41,7 @@ if (process.env.NODE_ENV === 'development') {
 const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
-  message: 'To many Request from this IP, PLease Try again later!'
+  message: 'To many Request from this IP, PLease Try again later!',
 });
 app.use('/api', limiter);
 
@@ -70,8 +71,8 @@ app.use(
       'company',
       'totalQuantity',
       'form',
-      'unit'
-    ]
+      'unit',
+    ],
   })
 );
 
@@ -98,6 +99,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/bookings', bookingRouter);
 app.route('/').get(blankRoute);
 
 //! Error handling for wrong URL
