@@ -79,7 +79,7 @@ exports.getAll = Model =>
     // const docs = await features.query.explain(); //explain stats of Query
     const docs = await features.query;
 
-    //! Send Respose
+    //! Send Response
     Response.status(200).json({
       Status: 'Successfull',
       RequestedAt: Request.requestTime,

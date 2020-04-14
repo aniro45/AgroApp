@@ -1,18 +1,18 @@
 const AppError = require(`${__dirname}/../utils/appError.js`);
 
-const handleDuplicateFieldsDB = error => {
+const handleDuplicateFieldsDB = (error) => {
   const value = error.errmsg.match(/(["'])(\\?.)*?\1/)[0];
   const message = `duplicate field value: ${value}. Please use another value!`;
   return new AppError(message, 400);
 };
 
-const handleCastErrorDB = error => {
+const handleCastErrorDB = (error) => {
   const message = `Invalid ${error.path}: ${error.value}.`;
   return new AppError(message, 400);
 };
 
-const handleValidationErrorDb = error => {
-  const errors = Object.values(error.errors).map(el => el.message);
+const handleValidationErrorDb = (error) => {
+  const errors = Object.values(error.errors).map((el) => el.message);
   const message = `Invalid Input Data. ${errors.join('. ')}`;
   return new AppError(message, 400);
 };
@@ -30,14 +30,14 @@ const sendErrorDev = (error, Request, Response) => {
       status: error.status,
       error: error,
       message: error.message,
-      stack: error.stack
+      stack: error.stack,
     });
   }
   // b) THE RENDERED WEBSITE
   console.log('Error', error);
   return Response.status(error.statusCode).render('error', {
     title: 'Something went wrong!',
-    msg: error.message
+    msg: error.message,
   });
 };
 
@@ -48,7 +48,7 @@ const sendErrorProd = (error, Request, Response) => {
     if (error.isOperational) {
       return Response.status(error.statusCode).json({
         status: error.status,
-        message: error.message
+        message: error.message,
       });
     }
     // b) programming Or other unkonwn errors : dont leak error details
@@ -58,7 +58,7 @@ const sendErrorProd = (error, Request, Response) => {
     //Send generic message
     return Response.status(500).json({
       status: 'error',
-      message: 'Something went wrong!'
+      message: 'Something went wrong!',
     });
   }
   // b) RENDERED WEBSITE
@@ -66,7 +66,7 @@ const sendErrorProd = (error, Request, Response) => {
     console.log(error);
     return Response.status(error.statusCode).render('error', {
       title: 'Something went wrong!',
-      msg: error.message
+      msg: error.message,
     });
   }
   //programming Or other unkonwn errors : dont leak error details
@@ -74,9 +74,9 @@ const sendErrorProd = (error, Request, Response) => {
   console.log('Error', error);
 
   //Send generic message
-  return Response.status(statusCode).render('error', {
+  return Response.status(error.statusCode).render('error', {
     title: 'Something Went wrong!',
-    msg: 'Please Try again leter!'
+    msg: 'Please Try again leter!',
   });
 };
 

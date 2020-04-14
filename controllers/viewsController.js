@@ -1,6 +1,7 @@
 const Product = require(`${__dirname}/../models/productModel`);
 const User = require(`${__dirname}/../models/userModel`);
 const Review = require(`${__dirname}/../models/reviewModel`);
+const Booking = require(`${__dirname}/../models/bookingModel`);
 const catchAsync = require(`${__dirname}/../utils/catchAsync`);
 const AppError = require(`${__dirname}/../utils/appError`);
 
@@ -15,7 +16,7 @@ exports.getOverview = catchAsync(async (Request, Response, next) => {
 
   Response.status(200).render('overview', {
     title: 'All Products',
-    products
+    products,
   });
 });
 
@@ -25,7 +26,7 @@ exports.getProduct = async (Request, Response, next) => {
   const product = await Product.findOne({ slug: Request.params.slug }).populate(
     {
       path: 'reviews',
-      fields: 'review rating user'
+      fields: 'review rating user',
     }
   );
 
@@ -38,37 +39,51 @@ exports.getProduct = async (Request, Response, next) => {
   //3) Render Template using the data from step 1 again
   Response.status(200).render('product', {
     title: `${product.name}`,
-    product
+    product,
   });
 };
 
 exports.getLoginForm = (Request, Response) => {
   Response.status(200).render('login', {
-    title: 'Log into Your Account'
+    title: 'Log into Your Account',
   });
 };
 
 exports.getAccount = (Request, Response) => {
   Response.status(200).render('account', {
-    title: 'Your Account'
+    title: 'Your Account',
   });
 };
+
+exports.getMyProduct = catchAsync(async (Request, Response, next) => {
+  //1) Find All bookings
+  const bookings = await Booking.find({ user: Request.user.id });
+
+  //2)Find product with returned IDs
+  const productIds = bookings.map((el) => el.product);
+  const products = await Product.find({ _id: { $in: productIds } });
+
+  Response.status(200).render('overview', {
+    title: 'My Products',
+    products,
+  });
+});
 
 exports.updateUserData = catchAsync(async (Request, Response, next) => {
   const updatedUser = await User.findByIdAndUpdate(
     Request.user.id,
     {
       name: Request.body.name,
-      email: Request.body.email
+      email: Request.body.email,
     },
     {
       new: true,
-      runValidators: true
+      runValidators: true,
     }
   );
 
   Response.status(200).render('account', {
     title: 'Your Account',
-    user: updatedUser
+    user: updatedUser,
   });
- });
+});

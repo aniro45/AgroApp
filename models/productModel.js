@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const sligify = require('slugify');
+const slugify = require('slugify');
 const validator = require('validator');
 const User = require(`${__dirname}/userModel`);
 
@@ -161,7 +161,7 @@ ProductSchema.virtual('reviews', {
 
 //Document Middleware
 ProductSchema.pre('save', function(next) {
-  this.slug = sligify(this.name, { lower: true });
+  this.slug = slugify(this.name, { lower: true });
   next();
 });
 

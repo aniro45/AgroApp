@@ -4,12 +4,12 @@ const User = require(`${__dirname}/../models/userModel`);
 const catchAsync = require(`${__dirname}/../utils/catchAsync`);
 const jwt = require('jsonwebtoken');
 const AppError = require(`${__dirname}/../utils/appError`);
-const sendEmail = require(`${__dirname}/../utils/email`);
+const Email = require(`${__dirname}/../utils/email`);
 
 //! Token creation Credentials
-const signToken = id => {
+const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN
+    expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
 
@@ -21,7 +21,7 @@ const createSendToken = (user, statusCode, Response) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    httpOnly: true
+    httpOnly: true,
   };
 
   //! Only apply when the production envirenment is HTTPS and not HTTP
@@ -38,8 +38,8 @@ const createSendToken = (user, statusCode, Response) => {
     status: 'success',
     token,
     data: {
-      user: user
-    }
+      user: user,
+    },
   });
 };
 
@@ -54,8 +54,11 @@ exports.signup = catchAsync(async (Request, Response, next) => {
     passwordChangedAt: Request.body.passwordChangedAt,
     passwordResetToken: Request.body.passwordResetToken,
     passwordResetExpires: Request.body.passwordResetExpires,
-    active: Request.body.active
+    active: Request.body.active,
   });
+  const url = `${Request.protocol}://${Request.get('host')}/me`;
+  console.log(url);
+  await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, Response);
 });
 
@@ -81,10 +84,10 @@ exports.login = catchAsync(async (Request, Response, next) => {
 exports.logout = (Request, Response, next) => {
   Response.cookie('jwt', 'loggedout', {
     expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true
+    httpOnly: true,
   });
   Response.status(200).json({
-    status: 'success'
+    status: 'success',
   });
 };
 
@@ -190,25 +193,17 @@ exports.forgotPassword = catchAsync(async (Request, Response, next) => {
   const resetToken = user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
 
-  //send it back to user's email
-  const resetUrl = `${Request.protocol}://${Request.get(
-    'host'
-  )}/api/v1/users/resetPassword/${resetToken}`;
-
-  const message = `Forgot your password? Submit a patch request 
-  with your new Password and password 
-  confrim to: ${resetUrl}.\nIf You didnt forget your 
-  password, please ignore this email`;
-
   try {
-    await sendEmail({
-      email: user.email,
-      subject: `Your password reset token is only valid for 10 mins`,
-      message
-    });
+    //send it back to user's email
+    const resetUrl = `${Request.protocol}://${Request.get(
+      'host'
+    )}/api/v1/users/resetPassword/${resetToken}`;
+
+    await new Email(user, resetUrl).sendPasswordReset();
+
     Response.status(200).json({
       status: 'success',
-      message: 'Token sent to Email'
+      message: 'Token sent to Email',
     });
   } catch (err) {
     user.passwordResetToken = undefined;
@@ -234,7 +229,7 @@ exports.resetPassword = catchAsync(async (Request, Response, next) => {
 
   const user = await User.findOne({
     passwordResetToken: hashedToken,
-    passwordResetExpires: { $gt: Date.now() }
+    passwordResetExpires: { $gt: Date.now() },
   });
 
   //If token is not expired, and there is user, set new password

@@ -4,11 +4,13 @@
 
 ::-moz-selection {
   background-color: #55c57a;
+  /* background-color: linear-gradient(to bottom right, #3399ff 0%, #ff99ff 100%); */
   color: #fff;
 }
 
 ::selection {
   background-color: #55c57a;
+  /* background-color: linear-gradient(to bottom right, #3399ff 0%, #ff99ff 100%); */
   color: #fff;
 }
 
@@ -1117,6 +1119,7 @@ body {
     to(#28b487)
   );
   background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
+  /* background-color: linear-gradient(to bottom right, #3399ff 0%, #ff99ff 100%) */
   opacity: 0.7;
 }
 .card__picture-img {

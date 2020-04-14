@@ -1,9 +1,52 @@
-const Products = require(`${__dirname}/../models/productModel.js`);
-const APIFeatures = require(`${__dirname}/../utils/apiFeatures.js`);
+const multer = require('multer');
+// const sharp = require('sharp');
+// const Products = require(`${__dirname}/../models/productModel.js`);
+
+// const APIFeatures = require(`${__dirname}/../utils/apiFeatures.js`);
 const catchAsync = require(`${__dirname}/../utils/catchAsync.js`);
 const User = require(`${__dirname}/../models/userModel`);
 const AppError = require(`${__dirname}/../utils/appError`);
 const factory = require(`${__dirname}/handlerFactory`);
+
+//! Multer All Related
+const multerStorage = multer.diskStorage({
+  destination: (Request, file, cb) => {
+    cb(null, 'public/img/users');
+  },
+  filename: (Request, file, cb) => {
+    // useer-65463694abc5464-6548946646.jpeg
+    const ext = file.mimetype.split('/')[1];
+    cb(null, `user-${Request.user.id}-${Date.now()}.${ext}`);
+  }
+});
+
+// const multerStorage = multer.memoryStorage();
+
+const multerFilter = (Request, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('Not an image! Please upload only images!', 400), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter
+});
+exports.uploadUserPhoto = upload.single('photo');
+
+//! Sharp Library for Image Procsessing
+// exports.resizeUserPhoto = (Request, Response, next) => {
+//   Request.file.filename = `user-${Request.user.id}-${Date.now()}.jpeg`;
+//   if (!Request.file) return next();
+//   sharp(Request.file.buffer)
+//     .resize(500, 500)
+//     .toFormat('jpeg')
+//     .jpeg({ quality: 90 })
+//     .toFile(`public/img/users/${Request.file.filename}`);
+//   next();
+// };
 
 //! This filters data and select only required data
 const filterObj = (obj, ...allowedFields) => {
@@ -34,7 +77,7 @@ exports.updateMe = catchAsync(async (Request, Response, next) => {
 
   //filtered out unwanted fieds name that not allowed to update
   const filteredBody = filterObj(Request.body, 'name', 'email');
-
+  if (Request.file) filteredBody.photo = Request.file.filename;
   //Update User Document
   const updatedUser = await User.findByIdAndUpdate(
     Request.user.id,
