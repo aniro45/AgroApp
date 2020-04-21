@@ -1,12 +1,49 @@
 import '@babel/polyfill';
 import { displayMap } from './mapbox';
 import { login, logout } from './login';
+import { signup } from './signup';
+import { forgotPassword, resetPassword } from './passwordOps';
 import { updateSettings } from './updateSettings';
 import { bookProduct } from './stripe.js';
+import { showAlert } from './alerts';
+
+if (document.querySelector('.form--password-recover')) {
+  document
+    .querySelector('.form--password-recover')
+    .addEventListener('submit', (e) => {
+      showAlert('processing', 'This Feature is Under construction!');
+    });
+}
+
+//!Forgot Paasword
+if (document.querySelector('.form--forgotPassword')) {
+  document
+    .querySelector('.form--forgotPassword')
+    .addEventListener('submit', (e) => {
+      e.preventDefault();
+      showAlert('processing', 'Processing...');
+      const email = document.getElementById('email').value;
+      forgotPassword(email);
+    });
+}
+
+//! Signup
+if (document.querySelector('.form--signup')) {
+  document.querySelector('.form--signup').addEventListener('submit', (e) => {
+    e.preventDefault();
+    showAlert('processing', 'Signing Up! Please Wait...');
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('confirm-password').value;
+    signup(name, email, password, passwordConfirm);
+  });
+}
 
 //!DOM implemetation
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
+// const signupForm = document.querySelector('.form--signup');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
@@ -22,6 +59,7 @@ if (mapBox) {
 if (loginForm) {
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    showAlert('processing', 'Logging In! Please wait...');
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     login(email, password);
