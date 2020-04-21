@@ -111,6 +111,9 @@ body {
 .alert--error {
   background-color: #eb4d4b;
 }
+.alert--processing {
+  background-color: #ffc012;
+}
 
 .heading-secondary {
   font-size: 2.25rem;
@@ -1325,4 +1328,35 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
+}
+
+/* My Additions*/
+.forgot-password-text {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bolder;
+  text-decoration: none;
+  text-align: center;
+  position: absolute;
+  left: 56%;
+  color: #12b876;
+}
+
+.forgot-password-text:hover {
+  text-decoration: underline;
+  color: #00cf4c;
+}
+
+.forgot-password-form {
+  margin: 0 auto;
+  max-width: 55rem;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  padding: 5rem 7rem;
+  border-radius: 5px;
+}
+
+.forgot-password-form .btn.btn--green {
+  margin-top: 10px;
 }
