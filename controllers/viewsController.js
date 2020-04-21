@@ -55,6 +55,27 @@ exports.getAccount = (Request, Response) => {
   });
 };
 
+exports.getSignupForm = (Request, Response) => {
+  Response.status(200).render('signup', {
+    title: 'Create New Account',
+  });
+};
+
+exports.forgotPasswordForm = (Request, Response) => {
+  Response.status(200).render('forgotPassword', {
+    title: 'Recover Your Password',
+  });
+};
+
+exports.resetPasswordForm = (Request, Response) => {
+  Response.status(200).render('resetPassword', {
+    title: 'Set New Password',
+  });
+  console.log(Request.params);
+  console.log(Request.body);
+  
+};
+
 exports.getMyProduct = catchAsync(async (Request, Response, next) => {
   //1) Find All bookings
   const bookings = await Booking.find({ user: Request.user.id });
