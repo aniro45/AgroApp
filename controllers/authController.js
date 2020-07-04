@@ -81,6 +81,7 @@ exports.login = catchAsync(async (Request, Response, next) => {
   createSendToken(user, 200, Response);
 });
 
+//! Logout Method
 exports.logout = (Request, Response, next) => {
   Response.cookie('jwt', 'loggedout', {
     expires: new Date(Date.now() + 10 * 1000),
