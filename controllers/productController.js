@@ -75,6 +75,7 @@ exports.getProductsWithin = catchAsync(async (Request, Response, next) => {
 
   const [lat, lng] = latlng.split(',');
   // console.log(distance, lat, lng, unit);
+  //My name is XYZ
 
   const radius = unit === 'mi' ? distance / 3963.2 : distance / 6378.1;
 
